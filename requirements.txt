@@ -1,7 +1,10 @@
-numpy
-pandas
-scipy
-matplotlib
-pyyaml
-pyarrow
-pytest
+# Versions with which all results were reproduced (Google Colab, Python 3.13.16).
+# Other versions will probably work, but the calibration results may differ
+# in the last digits, since differential evolution depends on the scipy version.
+numpy==2.1.3
+pandas==2.2.3
+scipy==1.16.3
+matplotlib==3.10.0
+PyYAML==6.0.3
+pyarrow==23.0.1
+pytest==8.4.2

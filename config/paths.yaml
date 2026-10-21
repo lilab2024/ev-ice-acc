@@ -1,5 +1,7 @@
-# Data root directory (Google Drive path in Colab)
-data_root: /content/drive/MyDrive/slu_research/ev_vs_ice/data
+# Data root directory: absolute, or relative to the repository root.
+# The environment variable MTM_DATA_ROOT overrides it (e.g. in Google Colab,
+# where the data are on Google Drive).
+data_root: data
 
 # All paths below are relative to data_root
 raw:

@@ -11,12 +11,12 @@ platoons, and ring-road simulations.
 **Only look at the results:** tables and figures of the paper are in `results/paper/`
 (CSV and LaTeX tables, PDF and PNG figures). No code needs to be run.
 
-**Reproduce everything (about 7 hours):**
+**Reproduce everything** (about 4 hours on Google Colab; Python 3.13 with the package versions in `requirements.txt`):
 
-    git clone <repository URL>
-    cd MixedTraffic-Modeling
+    git clone https://github.com/lilab2024/ev-ice-acc.git
+    cd ev-ice-acc
     pip install -r requirements.txt
-    # place the data as described below and set data_root in config/paths.yaml
+    # place the data in data/ as described below (or set MTM_DATA_ROOT)
     python -m pytest tests -q        # check the installation
     bash run_all.sh                  # all steps in order
 
@@ -32,12 +32,23 @@ Not included in this repository. Download the original datasets and place them a
     data/raw/ev_acc/<vehicle>/<gap>/<X>_desired/<v_free>/<v_reduced>/<run>.csv
                                                            (Lapardhaja et al., 2023)
 
-Set the data folder in `config/paths.yaml` or with the environment variable `MTM_DATA_ROOT`.
+By default the data are read from `data/` in the repository. To use another folder, set
+`data_root` in `config/paths.yaml` (absolute, or relative to the repository root) or the
+environment variable `MTM_DATA_ROOT`, e.g. in Google Colab:
+
+    import os
+    os.environ["MTM_DATA_ROOT"] = "/content/drive/MyDrive/<path to the data folder>"
+
+Run identifiers keep the raw vehicle codes and folder names (e.g. `ICE_VehD_*` is VehC
+in the paper, `EV_Tesla_*` is Model 3); see `config/vehicles.yaml`.
 
 ## Pipeline
 
 Run from the repository root, in this order. Every step reads only the outputs of earlier
-steps; long steps save each part immediately and can be resumed.
+steps; long steps save each part immediately and can be resumed. Step 03 skips
+configurations that already have a result; use `--force` to recompute them.
+Measured run times on Google Colab: step 03 about 75 min, 03b about 100 min, 06 about
+55 min, all other steps a few minutes or less.
 
 | Step | Script | Output |
 |---|---|---|
@@ -57,13 +68,11 @@ All settings (bounds, seeds, run selection, simulation set-up) are in `config/ex
 
     python -m pytest tests -q
 
-## Notes
-
-`docs/revision_notes.md` documents every finding and design decision of the reanalysis.
-
 ## Requirements
 
-numpy, pandas, scipy, matplotlib, pyyaml, pyarrow, pytest
+Python 3.13 with the package versions in `requirements.txt` (numpy, pandas, scipy,
+matplotlib, pyyaml, pyarrow, pytest). All results were reproduced with exactly these
+versions; with other versions the calibration may differ in the last digits.
 
 ## Paper tables and figures
 
