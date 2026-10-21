@@ -1,0 +1,7 @@
+Gap group,Configuration,"(15.0, 17.0]","(19.0, 21.0]","(23.0, 25.0]",Inside ICE range,Below / above
+Shortest,ICE min (6 vehicles),1.58-1.72 (1.60),1.34-1.54 (1.49),1.24-1.46 (1.32),,
+Shortest,IONIQ 5 Short,1.16,1.20,1.13,0/3,3 / 0
+Shortest,Model 3 Short,1.38,1.73,1.76,0/3,1 / 2
+Shortest,Polestar 2 Short,1.41,1.12,1.14,0/3,3 / 0
+Longest,ICE max (6 vehicles),2.31-2.88 (2.66),2.24-2.81 (2.56),2.17-2.55 (2.45),,
+Longest,IONIQ 5 XLong,2.03,2.16,2.17,1/3,2 / 0

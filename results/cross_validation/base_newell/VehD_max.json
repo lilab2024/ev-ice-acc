@@ -1,0 +1,60 @@
+{
+  "config": "VehD max",
+  "powertrain": "ICE",
+  "variant": "base_newell",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 3.258146406049177,
+      "test_spacing_rmse": 17.070060708392848,
+      "test_speed_rmse": 0.9972598429597195,
+      "test_collided": false,
+      "params": {
+        "tau": 1.7254293818154842
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 7.622644684741509,
+      "test_spacing_rmse": 4.061572470245543,
+      "test_speed_rmse": 0.6447948030348619,
+      "test_collided": false,
+      "params": {
+        "tau": 1.5904838121211
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 7.637114050389587,
+      "test_spacing_rmse": 3.9611407288917446,
+      "test_speed_rmse": 0.4292205051877788,
+      "test_collided": false,
+      "params": {
+        "tau": 1.753437486753156
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 8.26698645490458,
+      "test_spacing_rmse": 2.031976062706714,
+      "test_speed_rmse": 0.31202810317032864,
+      "test_collided": false,
+      "params": {
+        "tau": 1.6781073241230693
+      },
+      "at_bound": []
+    }
+  ]
+}

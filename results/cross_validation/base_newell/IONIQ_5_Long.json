@@ -1,0 +1,47 @@
+{
+  "config": "IONIQ 5 Long",
+  "powertrain": "EV",
+  "variant": "base_newell",
+  "fold_by": "v_reduced_mph",
+  "folds": [
+    {
+      "held_out": "25.0",
+      "n_train": 20,
+      "n_test": 16,
+      "train_spacing_rmse": 2.68817313947109,
+      "test_spacing_rmse": 2.301742143038263,
+      "test_speed_rmse": 0.3071601449068482,
+      "test_collided": false,
+      "params": {
+        "tau": 1.548335228590474
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "35.0",
+      "n_train": 24,
+      "n_test": 12,
+      "train_spacing_rmse": 2.4255235609797317,
+      "test_spacing_rmse": 2.695425451233875,
+      "test_speed_rmse": 0.40054100945173693,
+      "test_collided": false,
+      "params": {
+        "tau": 1.520549117976138
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "45.0",
+      "n_train": 28,
+      "n_test": 8,
+      "train_spacing_rmse": 2.466990859904649,
+      "test_spacing_rmse": 2.683346032958471,
+      "test_speed_rmse": 0.3796759910745733,
+      "test_collided": false,
+      "params": {
+        "tau": 1.5301587245707504
+      },
+      "at_bound": []
+    }
+  ]
+}

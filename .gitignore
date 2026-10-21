@@ -1,0 +1,18 @@
+# Data are not redistributed (see README)
+/data/
+
+# Intermediate files that can be regenerated
+results/ring/parts/
+*.log
+
+# Python and tool caches
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Results before the spacing definitions were unified (kept for the response letter)
+results_before_net_gap/
+
+# Results before the spacing definitions were unified (kept for the response letter)
+results_before_net_gap/

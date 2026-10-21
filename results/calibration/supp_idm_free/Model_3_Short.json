@@ -1,0 +1,110 @@
+{
+  "params": {
+    "v0": 30.96379955783125,
+    "delta": 1.1823492835159612,
+    "s0": 11.52219707092714,
+    "tau": 0.3000014612695072,
+    "alpha": 1.3094619401515009,
+    "beta": 1.6684139742246629
+  },
+  "objective": 4.336260548162811,
+  "at_bound": [
+    "tau=low"
+  ],
+  "per_run": {
+    "EV_Tesla_Short_d0_45to25_r1": {
+      "collided": false,
+      "spacing_rmse": 3.216433468976222,
+      "speed_rmse": 0.4776182294333075,
+      "spacing_mape": 15.816769464048527,
+      "speed_mape": 2.536275972523795
+    },
+    "EV_Tesla_Short_d0_45to25_r2": {
+      "collided": false,
+      "spacing_rmse": 3.248894684456401,
+      "speed_rmse": 0.4919152398616036,
+      "spacing_mape": 14.737005570976189,
+      "speed_mape": 2.5581819477228
+    },
+    "EV_Tesla_Short_d0_45to35_r1": {
+      "collided": false,
+      "spacing_rmse": 3.1789346876277413,
+      "speed_rmse": 0.30774408200766723,
+      "spacing_mape": 8.933953870393978,
+      "speed_mape": 1.5259084021861458
+    },
+    "EV_Tesla_Short_d0_55to25_r1": {
+      "collided": false,
+      "spacing_rmse": 4.158679580904363,
+      "speed_rmse": 0.6935818861125443,
+      "spacing_mape": 11.004236919978375,
+      "speed_mape": 3.129275774318506
+    },
+    "EV_Tesla_Short_d0_55to25_r2": {
+      "collided": false,
+      "spacing_rmse": 5.652820219725,
+      "speed_rmse": 0.7319519591946095,
+      "spacing_mape": 10.878971393416272,
+      "speed_mape": 3.219766440520039
+    },
+    "EV_Tesla_Short_d0_55to35_r1": {
+      "collided": false,
+      "spacing_rmse": 2.3159121386465684,
+      "speed_rmse": 0.45535733383995297,
+      "spacing_mape": 6.244819728340559,
+      "speed_mape": 1.9088961998438851
+    },
+    "EV_Tesla_Short_d0_55to35_r2": {
+      "collided": false,
+      "spacing_rmse": 4.083767894628251,
+      "speed_rmse": 0.5561427020888028,
+      "spacing_mape": 8.705733236123626,
+      "speed_mape": 2.439349087465331
+    },
+    "EV_Tesla_Short_d0_55to45_r1": {
+      "collided": false,
+      "spacing_rmse": 2.3630844145396166,
+      "speed_rmse": 0.355222280094289,
+      "spacing_mape": 7.12656464547116,
+      "speed_mape": 1.3496269104224894
+    },
+    "EV_Tesla_Short_d0_55to45_r2": {
+      "collided": false,
+      "spacing_rmse": 2.672935561428934,
+      "speed_rmse": 0.31400244526011056,
+      "spacing_mape": 7.939858326959774,
+      "speed_mape": 1.2525634145388473
+    },
+    "EV_Tesla_Short_d5_55to35_r1": {
+      "collided": false,
+      "spacing_rmse": 4.954719315408504,
+      "speed_rmse": 0.6094062587678466,
+      "spacing_mape": 11.305971336003962,
+      "speed_mape": 2.7130197849313475
+    },
+    "EV_Tesla_Short_d5_55to35_r2": {
+      "collided": false,
+      "spacing_rmse": 11.85268406344932,
+      "speed_rmse": 0.5689622326959209,
+      "spacing_mape": 37.950926604748894,
+      "speed_mape": 2.326550612370875
+    }
+  },
+  "free": [
+    "v0",
+    "delta",
+    "s0",
+    "tau",
+    "alpha",
+    "beta"
+  ],
+  "fixed": {},
+  "nfev": 159,
+  "nit": 158,
+  "success": true,
+  "message": "Optimization terminated successfully.",
+  "seconds": 40.3,
+  "config": "Model 3 Short",
+  "powertrain": "EV",
+  "variant": "supp_idm_free"
+}

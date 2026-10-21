@@ -1,0 +1,72 @@
+{
+  "config": "VehF min",
+  "powertrain": "ICE",
+  "variant": "main_ovrv",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.3769347360929813,
+      "test_spacing_rmse": 2.798014914754914,
+      "test_speed_rmse": 0.3459646998902874,
+      "test_collided": false,
+      "params": {
+        "k1": 0.05698419546776651,
+        "k2": 0.192552051149545,
+        "eta": 16.47209863777268,
+        "tau": 0.6431509591900411
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.6162623104343137,
+      "test_spacing_rmse": 2.1364576452736315,
+      "test_speed_rmse": 0.2727814945612228,
+      "test_collided": false,
+      "params": {
+        "k1": 0.058281189793413235,
+        "k2": 0.18042952928029987,
+        "eta": 16.198556587888717,
+        "tau": 0.650119698536721
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.6742204157334066,
+      "test_spacing_rmse": 3.2798816178225834,
+      "test_speed_rmse": 0.21130574901311713,
+      "test_collided": false,
+      "params": {
+        "k1": 0.0671914740996738,
+        "k2": 0.15536792478148076,
+        "eta": 12.504835142689386,
+        "tau": 0.8591636138617569
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.4739664744120262,
+      "test_spacing_rmse": 3.0305426395725434,
+      "test_speed_rmse": 0.16136901986661303,
+      "test_collided": false,
+      "params": {
+        "k1": 0.05567102623347492,
+        "k2": 0.20099771905717045,
+        "eta": 23.72743307817546,
+        "tau": 0.39681538016240836
+      },
+      "at_bound": []
+    }
+  ]
+}

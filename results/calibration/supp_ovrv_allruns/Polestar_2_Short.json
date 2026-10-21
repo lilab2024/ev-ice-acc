@@ -1,0 +1,106 @@
+{
+  "params": {
+    "k1": 0.05194684963411761,
+    "k2": 0.5890932910908501,
+    "eta": 19.96313166182531,
+    "tau": 0.3051810876847858
+  },
+  "objective": 2.239204191792071,
+  "at_bound": [
+    "tau=low"
+  ],
+  "per_run": {
+    "EV_Polestar_Short_d0_55to25_r1": {
+      "collided": false,
+      "spacing_rmse": 3.0958503155757233,
+      "speed_rmse": 0.27495323306642533,
+      "spacing_mape": 12.154818741766817,
+      "speed_mape": 1.2503764597815898
+    },
+    "EV_Polestar_Short_d0_55to25_r2": {
+      "collided": false,
+      "spacing_rmse": 4.543747936213318,
+      "speed_rmse": 0.33759764774030054,
+      "spacing_mape": 20.266560870104307,
+      "speed_mape": 1.5228003832860235
+    },
+    "EV_Polestar_Short_d0_55to25_r3": {
+      "collided": false,
+      "spacing_rmse": 1.9782922882945093,
+      "speed_rmse": 0.2877203064445396,
+      "spacing_mape": 6.257935964381891,
+      "speed_mape": 1.1602759826787241
+    },
+    "EV_Polestar_Short_d0_55to35_r1": {
+      "collided": false,
+      "spacing_rmse": 1.465930096034369,
+      "speed_rmse": 0.3303293497740347,
+      "spacing_mape": 5.439707599357326,
+      "speed_mape": 0.960542833889629
+    },
+    "EV_Polestar_Short_d0_55to35_r2": {
+      "collided": false,
+      "spacing_rmse": 2.394645956244642,
+      "speed_rmse": 0.3232816472579435,
+      "spacing_mape": 7.328030458356411,
+      "speed_mape": 1.2575469315409051
+    },
+    "EV_Polestar_Short_d0_55to35_r3": {
+      "collided": false,
+      "spacing_rmse": 1.7445428379838042,
+      "speed_rmse": 0.36314918366299864,
+      "spacing_mape": 5.491152171959481,
+      "speed_mape": 1.4781339130591737
+    },
+    "EV_Polestar_Short_d0_55to45_r1": {
+      "collided": false,
+      "spacing_rmse": 1.3721374319385742,
+      "speed_rmse": 0.2347115769209122,
+      "spacing_mape": 4.531447770311934,
+      "speed_mape": 0.8411806961088107
+    },
+    "EV_Polestar_Short_d0_55to45_r2": {
+      "collided": false,
+      "spacing_rmse": 1.2324343928342836,
+      "speed_rmse": 0.25676446117892454,
+      "spacing_mape": 4.103949895777172,
+      "speed_mape": 0.9345131026263583
+    },
+    "EV_Polestar_Short_d0_55to45_r3": {
+      "collided": false,
+      "spacing_rmse": 2.7645848676379035,
+      "speed_rmse": 0.2348503944613116,
+      "spacing_mape": 7.904311698133057,
+      "speed_mape": 0.7975262958681892
+    },
+    "EV_Polestar_Short_d0_55to45_r4": {
+      "collided": false,
+      "spacing_rmse": 2.6709266684687636,
+      "speed_rmse": 0.23686962673462306,
+      "spacing_mape": 7.9387676339401425,
+      "speed_mape": 0.7837394515582672
+    },
+    "EV_Polestar_Short_d0_55to45_r5": {
+      "collided": false,
+      "spacing_rmse": 1.3681533184868906,
+      "speed_rmse": 0.22219817208049655,
+      "spacing_mape": 3.9844772671883506,
+      "speed_mape": 0.668906224873974
+    }
+  },
+  "free": [
+    "k1",
+    "k2",
+    "eta",
+    "tau"
+  ],
+  "fixed": {},
+  "nfev": 45,
+  "nit": 44,
+  "success": true,
+  "message": "Optimization terminated successfully.",
+  "seconds": 7.0,
+  "config": "Polestar 2 Short",
+  "powertrain": "EV",
+  "variant": "supp_ovrv_allruns"
+}

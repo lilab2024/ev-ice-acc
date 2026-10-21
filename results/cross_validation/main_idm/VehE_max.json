@@ -1,0 +1,80 @@
+{
+  "config": "VehE max",
+  "powertrain": "ICE",
+  "variant": "main_idm",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.9869506028422546,
+      "test_spacing_rmse": 2.083743237161822,
+      "test_speed_rmse": 0.283098582451957,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 4.179712811327097,
+        "tau": 2.0186778522635818,
+        "alpha": 1.2938111944298698,
+        "beta": 36.769666514141925
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.97982800772866,
+      "test_spacing_rmse": 1.825960340667546,
+      "test_speed_rmse": 0.26188870579801143,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 3.342604707592563,
+        "tau": 2.0420225996505965,
+        "alpha": 1.3212871961623298,
+        "beta": 19.31164809775195
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.4375283777059007,
+      "test_spacing_rmse": 3.406700077204678,
+      "test_speed_rmse": 0.42292579584590173,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 2.322684218324614,
+        "tau": 2.1005180339038128,
+        "alpha": 1.2845380626233274,
+        "beta": 21.83285189659786
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.136536463497622,
+      "test_spacing_rmse": 1.3304182600112084,
+      "test_speed_rmse": 0.1757004092074359,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 3.473248936441532,
+        "tau": 2.045170320650563,
+        "alpha": 1.1707862826099,
+        "beta": 17.384455528436206
+      },
+      "at_bound": []
+    }
+  ]
+}

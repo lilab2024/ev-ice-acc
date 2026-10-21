@@ -1,0 +1,56 @@
+{
+  "config": "IONIQ 5 Medium",
+  "powertrain": "EV",
+  "variant": "main_ovrv",
+  "fold_by": "v_reduced_mph",
+  "folds": [
+    {
+      "held_out": "25.0",
+      "n_train": 18,
+      "n_test": 16,
+      "train_spacing_rmse": 1.6352891478479465,
+      "test_spacing_rmse": 2.2124168763546845,
+      "test_speed_rmse": 0.39339828358717777,
+      "test_collided": false,
+      "params": {
+        "k1": 0.07506352438125308,
+        "k2": 0.3984676687629216,
+        "eta": 10.087807768153304,
+        "tau": 1.0024745268505435
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "35.0",
+      "n_train": 23,
+      "n_test": 11,
+      "train_spacing_rmse": 1.7156234642732218,
+      "test_spacing_rmse": 1.7951059692724802,
+      "test_speed_rmse": 0.3914773314740217,
+      "test_collided": false,
+      "params": {
+        "k1": 0.08480786749851804,
+        "k2": 0.44493628668154295,
+        "eta": 6.5251620687947085,
+        "tau": 1.1537363639942813
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "45.0",
+      "n_train": 27,
+      "n_test": 7,
+      "train_spacing_rmse": 1.7364541014927386,
+      "test_spacing_rmse": 1.736846187714509,
+      "test_speed_rmse": 0.34854912028929885,
+      "test_collided": false,
+      "params": {
+        "k1": 0.08351801630732608,
+        "k2": 0.44194719431172214,
+        "eta": 6.487150453560038,
+        "tau": 1.1624060065652646
+      },
+      "at_bound": []
+    }
+  ]
+}

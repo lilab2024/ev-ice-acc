@@ -1,0 +1,64 @@
+{
+  "config": "IONIQ 5 XLong",
+  "powertrain": "EV",
+  "variant": "main_idm",
+  "fold_by": "v_reduced_mph",
+  "folds": [
+    {
+      "held_out": "25.0",
+      "n_train": 19,
+      "n_test": 15,
+      "train_spacing_rmse": 1.3665458005028952,
+      "test_spacing_rmse": 1.8894420907297567,
+      "test_speed_rmse": 0.21739694035119023,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 1.7952484177928394,
+        "tau": 2.071666410256391,
+        "alpha": 1.6114708303452907,
+        "beta": 4.32261457769296
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "35.0",
+      "n_train": 23,
+      "n_test": 11,
+      "train_spacing_rmse": 1.7039486884266952,
+      "test_spacing_rmse": 1.2194561499626118,
+      "test_speed_rmse": 0.24400788133622375,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 0.5153598856600379,
+        "tau": 2.1402009423010315,
+        "alpha": 1.8058743069661087,
+        "beta": 4.740334189791028
+      },
+      "at_bound": [
+        "s0=low"
+      ]
+    },
+    {
+      "held_out": "45.0",
+      "n_train": 26,
+      "n_test": 8,
+      "train_spacing_rmse": 1.3867906792527291,
+      "test_spacing_rmse": 2.274946304043373,
+      "test_speed_rmse": 0.23436021579405275,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 1.2101986031545433,
+        "tau": 2.049750250764258,
+        "alpha": 1.2279429862767937,
+        "beta": 2.3590117450939943
+      },
+      "at_bound": []
+    }
+  ]
+}

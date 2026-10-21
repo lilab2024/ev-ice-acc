@@ -1,0 +1,84 @@
+{
+  "config": "VehB max",
+  "powertrain": "ICE",
+  "variant": "base_gipps",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 5.1432170359714835,
+      "test_spacing_rmse": 5.444547904599078,
+      "test_speed_rmse": 0.7369180053805949,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 1.4442627884487296,
+        "a": 0.4950132471675439,
+        "B": 49.03978303449064,
+        "S": 10.592200159777148
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 4.8964594819682965,
+      "test_spacing_rmse": 6.191449964744319,
+      "test_speed_rmse": 0.6673162534558934,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 1.4411511800674122,
+        "a": 0.47264860177439205,
+        "B": 49.867302547398474,
+        "S": 10.11861706215101
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 4.534655307989298,
+      "test_spacing_rmse": 8.761816118877846,
+      "test_speed_rmse": 0.5100337229043355,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 1.761643563071162,
+        "a": 0.48312262083918234,
+        "B": 49.4644797567144,
+        "S": 1.130219762911615
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 5.666959229854271,
+      "test_spacing_rmse": 4.486297019820799,
+      "test_speed_rmse": 0.43004896154015476,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 1.2766129933455084,
+        "a": 0.45607455912550576,
+        "B": 49.98334022165203,
+        "S": 17.257828940706126
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "config": "VehD max",
+  "powertrain": "ICE",
+  "variant": "ext_ovrv_lag",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.5127178894823334,
+      "test_spacing_rmse": 3.240604399257771,
+      "test_speed_rmse": 0.3305076825332464,
+      "test_collided": false,
+      "params": {
+        "k1": 0.021919233933471394,
+        "k2": 0.27280006332244455,
+        "eta": 10.450585093963053,
+        "tau": 1.9611835391912766,
+        "T_a": 2.993362753470484
+      },
+      "at_bound": [
+        "T_a=high"
+      ]
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.7745102013651062,
+      "test_spacing_rmse": 2.5496657473165523,
+      "test_speed_rmse": 0.1982985802825702,
+      "test_collided": false,
+      "params": {
+        "k1": 0.01968595473405199,
+        "k2": 0.288494354274492,
+        "eta": 12.628043489981028,
+        "tau": 1.90790389735574,
+        "T_a": 2.9982382428698187
+      },
+      "at_bound": [
+        "T_a=high"
+      ]
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.9336453482299536,
+      "test_spacing_rmse": 1.9255976940876431,
+      "test_speed_rmse": 0.26543949249187754,
+      "test_collided": false,
+      "params": {
+        "k1": 0.02303511202256131,
+        "k2": 0.289419545409071,
+        "eta": 12.3693211644474,
+        "tau": 1.8918636541393872,
+        "T_a": 2.99664678954725
+      },
+      "at_bound": [
+        "T_a=high"
+      ]
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.1920347199079093,
+      "test_spacing_rmse": 1.7092416550177394,
+      "test_speed_rmse": 0.19224526244240084,
+      "test_collided": false,
+      "params": {
+        "k1": 0.024703412464840147,
+        "k2": 0.2618002540473976,
+        "eta": 7.8995226167714385,
+        "tau": 2.052212627004864,
+        "T_a": 2.9967794180946967
+      },
+      "at_bound": [
+        "T_a=high"
+      ]
+    }
+  ]
+}

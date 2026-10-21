@@ -1,0 +1,92 @@
+{
+  "config": "VehF max",
+  "powertrain": "ICE",
+  "variant": "ext_idm_lag",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.1725059870553152,
+      "test_spacing_rmse": 2.6506724360065506,
+      "test_speed_rmse": 0.3553182704663979,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 3.2222081561321536,
+        "tau": 2.0764678687712332,
+        "alpha": 1.2568474207658793,
+        "beta": 32.88097816109989,
+        "T_a": 0.013206825321114168
+      },
+      "at_bound": [
+        "T_a=low"
+      ]
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.2838200464807017,
+      "test_spacing_rmse": 1.7969015915557922,
+      "test_speed_rmse": 0.2966703957514986,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 2.45293794232506,
+        "tau": 2.1039932363005946,
+        "alpha": 1.3876949023705563,
+        "beta": 18.348613241842646,
+        "T_a": 0.004399525929628112
+      },
+      "at_bound": [
+        "T_a=low"
+      ]
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.4799749969952138,
+      "test_spacing_rmse": 1.1572182053058158,
+      "test_speed_rmse": 0.11129051691211671,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 2.6252190058092495,
+        "tau": 2.0989006922086273,
+        "alpha": 1.3740164418299434,
+        "beta": 19.118609163920983,
+        "T_a": 0.0041456280865763695
+      },
+      "at_bound": [
+        "T_a=low"
+      ]
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.4850801135327412,
+      "test_spacing_rmse": 1.1984510564529247,
+      "test_speed_rmse": 0.1644000879901169,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 1.8622981319862095,
+        "tau": 2.124719485859769,
+        "alpha": 1.2453717435580458,
+        "beta": 19.154645590047558,
+        "T_a": 0.006723327547050184
+      },
+      "at_bound": [
+        "T_a=low"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "config": "VehB max",
+  "powertrain": "ICE",
+  "variant": "main_idm",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 3.4938516784138525,
+      "test_spacing_rmse": 4.107519604503551,
+      "test_speed_rmse": 0.5572770625178946,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 12.830994674395885,
+        "tau": 2.0718504445894315,
+        "alpha": 0.8851550323006088,
+        "beta": 19.51641190479328
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 3.733438052527665,
+      "test_spacing_rmse": 3.2087983665373025,
+      "test_speed_rmse": 0.31766459801573954,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 11.37427823424529,
+        "tau": 2.105007540893598,
+        "alpha": 0.9642686973097716,
+        "beta": 15.004335237655951
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.7056716226542252,
+      "test_spacing_rmse": 7.226262771723496,
+      "test_speed_rmse": 0.4194431218342205,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 4.861616661121621,
+        "tau": 2.4619657925350023,
+        "alpha": 1.0274657978456023,
+        "beta": 26.335911618589066
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 3.4777954850273165,
+      "test_spacing_rmse": 4.208567661077072,
+      "test_speed_rmse": 0.2611930228116367,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 19.94339128806941,
+        "tau": 1.7988718795509226,
+        "alpha": 0.9093363691896292,
+        "beta": 9.595719479766373
+      },
+      "at_bound": [
+        "s0=high"
+      ]
+    }
+  ]
+}

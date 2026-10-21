@@ -1,0 +1,49 @@
+{
+  "params": {
+    "tau": 1.1104359695880701
+  },
+  "objective": 5.08672010117994,
+  "at_bound": [],
+  "per_run": {
+    "ICE_VehE_dip_min": {
+      "collided": false,
+      "spacing_rmse": 10.037398453217529,
+      "speed_rmse": 1.0073648002148643,
+      "spacing_mape": 29.76490306243037,
+      "speed_mape": 3.2367733250479356
+    },
+    "ICE_VehE_osc_min": {
+      "collided": false,
+      "spacing_rmse": 4.3634550569769335,
+      "speed_rmse": 0.6571707113171024,
+      "spacing_mape": 10.374926401891953,
+      "speed_mape": 2.264272882169066
+    },
+    "ICE_VehE_stepH_min": {
+      "collided": false,
+      "spacing_rmse": 3.617851185575456,
+      "speed_rmse": 0.5053577009379274,
+      "spacing_mape": 6.923877101484665,
+      "speed_mape": 1.1063815397227517
+    },
+    "ICE_VehE_stepL_min": {
+      "collided": false,
+      "spacing_rmse": 2.3281757089498476,
+      "speed_rmse": 0.3392704826242254,
+      "spacing_mape": 6.492864231814364,
+      "speed_mape": 1.0664073418517022
+    }
+  },
+  "free": [
+    "tau"
+  ],
+  "fixed": {},
+  "nfev": 8,
+  "nit": 7,
+  "success": true,
+  "message": "Optimization terminated successfully.",
+  "seconds": 0.1,
+  "config": "VehD min",
+  "powertrain": "ICE",
+  "variant": "base_newell"
+}

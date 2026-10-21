@@ -1,0 +1,16 @@
+# ICE: vehicle code in raw file names -> name used in the paper
+# VehC is a hybrid and is excluded; the remaining vehicles are renumbered in the paper
+ice:
+  A: {paper_name: VehA}
+  B: {paper_name: VehB}
+  C: {paper_name: null, exclude: true, reason: hybrid powertrain}
+  D: {paper_name: VehC}
+  E: {paper_name: VehD}
+  F: {paper_name: VehE}
+  G: {paper_name: VehF}
+
+# EV: folder name on Drive (must match exactly) -> name used in the paper
+ev:
+  "Hyundai Ioniq 5": {paper_name: IONIQ 5}
+  "Tesla":           {paper_name: Model 3}
+  "Polestar":        {paper_name: Polestar 2}

@@ -1,0 +1,72 @@
+{
+  "config": "VehD min",
+  "powertrain": "ICE",
+  "variant": "main_ovrv",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.6956697408304329,
+      "test_spacing_rmse": 2.4058773513640843,
+      "test_speed_rmse": 0.4722804348786022,
+      "test_collided": false,
+      "params": {
+        "k1": 0.04832843833874367,
+        "k2": 0.1570630628149724,
+        "eta": 5.429059005674705,
+        "tau": 1.2584615903188923
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.6287494289199838,
+      "test_spacing_rmse": 2.5022436914309987,
+      "test_speed_rmse": 0.26296051738437726,
+      "test_collided": false,
+      "params": {
+        "k1": 0.06578996290532302,
+        "k2": 0.11989385079970294,
+        "eta": 4.633573870809368,
+        "tau": 1.277351481000455
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.7459466085529636,
+      "test_spacing_rmse": 2.0642024645176167,
+      "test_speed_rmse": 0.32142517257941783,
+      "test_collided": false,
+      "params": {
+        "k1": 0.0643116931674208,
+        "k2": 0.12820602530494307,
+        "eta": 4.624802065181252,
+        "tau": 1.2969056985836938
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.9309966011833868,
+      "test_spacing_rmse": 2.0305396001315685,
+      "test_speed_rmse": 0.19192070564591057,
+      "test_collided": false,
+      "params": {
+        "k1": 0.05371417108239507,
+        "k2": 0.15636838566601685,
+        "eta": 9.034857323072922,
+        "tau": 1.1353244195264258
+      },
+      "at_bound": []
+    }
+  ]
+}

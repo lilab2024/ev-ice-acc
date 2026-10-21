@@ -1,0 +1,10 @@
+Powertrain,Vehicle,Gap settings,Runs,Runs passing QC,Runs (main),Duration (h),Duration main (h),Speed range main (m/s)
+ICE,VehA,min/max,8,8,8,1.31,1.31,14.6-33.3
+ICE,VehB,min/max,8,8,8,1.4,1.4,14.6-34.4
+ICE,VehC,min/max,8,8,8,1.31,1.31,14.6-34.3
+ICE,VehD,min/max,8,8,8,1.35,1.35,13.0-34.7
+ICE,VehE,min/max,8,8,8,1.36,1.36,13.8-35.0
+ICE,VehF,min/max,8,8,8,1.26,1.26,14.8-34.2
+EV,IONIQ 5,Short/Medium/Long/XLong,272,262,138,4.12,1.81,10.3-27.2
+EV,Model 3,Short,11,11,11,0.18,0.18,10.0-25.6
+EV,Polestar 2,Short,11,11,11,0.2,0.2,10.3-24.6

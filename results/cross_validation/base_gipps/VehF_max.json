@@ -1,0 +1,85 @@
+{
+  "config": "VehF max",
+  "powertrain": "ICE",
+  "variant": "base_gipps",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.401962114098533,
+      "test_spacing_rmse": 3.477767833305643,
+      "test_speed_rmse": 0.658825851484641,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 1.418815747012173,
+        "a": 0.5964805316387629,
+        "B": 49.533498546714355,
+        "S": 2.264001094238436
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.308643217721102,
+      "test_spacing_rmse": 3.7268657600289536,
+      "test_speed_rmse": 0.5788998958555066,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 1.430135862428386,
+        "a": 0.5835286713864076,
+        "B": 49.6231266870591,
+        "S": 1.7156911624346947
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.8585884950044753,
+      "test_spacing_rmse": 2.1768077134101533,
+      "test_speed_rmse": 0.24096202349579324,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 1.472069683084348,
+        "a": 0.5955873528073377,
+        "B": 49.53205341150033,
+        "S": 0.5109168841194833
+      },
+      "at_bound": [
+        "B=high",
+        "S=low"
+      ]
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 3.0140959364544564,
+      "test_spacing_rmse": 1.7727196637476617,
+      "test_speed_rmse": 0.26428223749445856,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 1.4602817949444908,
+        "a": 0.554185866159431,
+        "B": 49.83877417571901,
+        "S": 0.5289138939015263
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    }
+  ]
+}

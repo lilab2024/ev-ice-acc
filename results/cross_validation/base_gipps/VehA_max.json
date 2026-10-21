@@ -1,0 +1,84 @@
+{
+  "config": "VehA max",
+  "powertrain": "ICE",
+  "variant": "base_gipps",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 3.543321592694536,
+      "test_spacing_rmse": 4.580533594306535,
+      "test_speed_rmse": 0.7464953514168075,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 1.4009731884638579,
+        "a": 0.5829226551637199,
+        "B": 49.24099999309273,
+        "S": 9.835473514703107
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 3.1695419328985666,
+      "test_spacing_rmse": 5.6634271917511105,
+      "test_speed_rmse": 0.6455461717382588,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 1.3951220480905908,
+        "a": 0.5574774792243753,
+        "B": 49.018519037506266,
+        "S": 10.134221162084353
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 4.2027889077494205,
+      "test_spacing_rmse": 4.585340251822188,
+      "test_speed_rmse": 0.19736970483077798,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 1.6832182419675976,
+        "a": 0.5570058455984681,
+        "B": 48.929127115710685,
+        "S": 0.5981543524388471
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 3.821295368955719,
+      "test_spacing_rmse": 4.486500547153445,
+      "test_speed_rmse": 0.3934856432139463,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 1.5563148560838482,
+        "a": 0.5001982205314066,
+        "B": 49.44289459491493,
+        "S": 2.852998806354554
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "config": "Polestar 2 Short",
+  "powertrain": "EV",
+  "variant": "ext_idm_lag",
+  "fold_by": "v_reduced_mph",
+  "folds": [
+    {
+      "held_out": "25.0",
+      "n_train": 8,
+      "n_test": 3,
+      "train_spacing_rmse": 1.8105655287817948,
+      "test_spacing_rmse": 4.428598193500748,
+      "test_speed_rmse": 0.42051955326813983,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 0.8388049906867039,
+        "tau": 1.1035060098701166,
+        "alpha": 0.9018380843230611,
+        "beta": 2.152984287327058,
+        "T_a": 0.9637789080715988
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "35.0",
+      "n_train": 8,
+      "n_test": 3,
+      "train_spacing_rmse": 2.1504592519768866,
+      "test_spacing_rmse": 2.1844644591856968,
+      "test_speed_rmse": 0.2586327781813804,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 0.503384068900564,
+        "tau": 1.118353957097128,
+        "alpha": 1.1597769861407061,
+        "beta": 3.0355764064128152,
+        "T_a": 1.004626071760964
+      },
+      "at_bound": [
+        "s0=low"
+      ]
+    },
+    {
+      "held_out": "45.0",
+      "n_train": 6,
+      "n_test": 5,
+      "train_spacing_rmse": 2.1544060959860523,
+      "test_spacing_rmse": 2.400331941345944,
+      "test_speed_rmse": 0.2535602018159393,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 0.5038314590220185,
+        "tau": 1.0707948663608322,
+        "alpha": 0.9687856604263352,
+        "beta": 1.2948510674055882,
+        "T_a": 1.3803799127014043
+      },
+      "at_bound": [
+        "s0=low"
+      ]
+    }
+  ]
+}

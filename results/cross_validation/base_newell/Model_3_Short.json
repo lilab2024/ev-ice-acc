@@ -1,0 +1,47 @@
+{
+  "config": "Model 3 Short",
+  "powertrain": "EV",
+  "variant": "base_newell",
+  "fold_by": "v_reduced_mph",
+  "folds": [
+    {
+      "held_out": "25.0",
+      "n_train": 7,
+      "n_test": 4,
+      "train_spacing_rmse": 12.291278416854023,
+      "test_spacing_rmse": 14.11171701838897,
+      "test_speed_rmse": 0.8542393545569008,
+      "test_collided": false,
+      "params": {
+        "tau": 0.684725286770361
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "35.0",
+      "n_train": 6,
+      "n_test": 5,
+      "train_spacing_rmse": 13.424456416082757,
+      "test_spacing_rmse": 12.387815699007499,
+      "test_speed_rmse": 0.9481873794877608,
+      "test_collided": false,
+      "params": {
+        "tau": 0.684725286770361
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "45.0",
+      "n_train": 9,
+      "n_test": 2,
+      "train_spacing_rmse": 13.15105319641717,
+      "test_spacing_rmse": 12.059835637481449,
+      "test_speed_rmse": 0.6578018933224549,
+      "test_collided": false,
+      "params": {
+        "tau": 0.7379888164037329
+      },
+      "at_bound": []
+    }
+  ]
+}

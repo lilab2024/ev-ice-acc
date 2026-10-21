@@ -1,0 +1,89 @@
+{
+  "config": "VehF min",
+  "powertrain": "ICE",
+  "variant": "ext_idm_lag",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.3070827315100908,
+      "test_spacing_rmse": 1.2049475937777956,
+      "test_speed_rmse": 0.2612073784678786,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 16.8847185282566,
+        "tau": 0.6214312926887566,
+        "alpha": 1.2220896980242064,
+        "beta": 21.53152639647938,
+        "T_a": 0.01269069330284589
+      },
+      "at_bound": [
+        "T_a=low"
+      ]
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.1108381699377632,
+      "test_spacing_rmse": 1.7375696847839506,
+      "test_speed_rmse": 0.18555060946095256,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 15.961294545343293,
+        "tau": 0.6516368468221361,
+        "alpha": 1.1514078628428481,
+        "beta": 13.610532443473154,
+        "T_a": 0.1671014804852089
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.0769810646309987,
+      "test_spacing_rmse": 2.9526708105100514,
+      "test_speed_rmse": 0.18795717623207925,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 12.171596801950457,
+        "tau": 0.8505465146598239,
+        "alpha": 1.1760833929213645,
+        "beta": 14.867422342359937,
+        "T_a": 0.3476114015410481
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.0296222794420888,
+      "test_spacing_rmse": 2.134947641753601,
+      "test_speed_rmse": 0.19437274377049182,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 19.953931169513062,
+        "tau": 0.5166928643786579,
+        "alpha": 1.113915131127769,
+        "beta": 10.815276132289597,
+        "T_a": 0.013840670630593133
+      },
+      "at_bound": [
+        "s0=high",
+        "T_a=low"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "config": "VehF min",
+  "powertrain": "ICE",
+  "variant": "base_gipps",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.2994077017909116,
+      "test_spacing_rmse": 4.159286329821952,
+      "test_speed_rmse": 0.8267821271135457,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 0.43935804388685384,
+        "a": 0.6099353062337503,
+        "B": 49.13474588658512,
+        "S": 15.996371172303132
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.4122401823589517,
+      "test_spacing_rmse": 3.6217464401627906,
+      "test_speed_rmse": 0.6132059403452723,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 0.4456168880272626,
+        "a": 0.5716949416792809,
+        "B": 49.801551552174054,
+        "S": 15.585748277324718
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.792426455409322,
+      "test_spacing_rmse": 4.244582845507274,
+      "test_speed_rmse": 0.31929502618881356,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 0.6431642753011508,
+        "a": 0.5670494107225157,
+        "B": 49.90627419760056,
+        "S": 9.942094543044764
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.7688483202553056,
+      "test_spacing_rmse": 3.35082455481997,
+      "test_speed_rmse": 0.5064327369805247,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 0.3492619089420881,
+        "a": 0.5161712553284294,
+        "B": 48.13632691291028,
+        "S": 19.842194495379765
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    }
+  ]
+}

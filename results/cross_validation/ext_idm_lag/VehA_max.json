@@ -1,0 +1,92 @@
+{
+  "config": "VehA max",
+  "powertrain": "ICE",
+  "variant": "ext_idm_lag",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.5810655981477053,
+      "test_spacing_rmse": 2.706448212891873,
+      "test_speed_rmse": 0.3943645586827607,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 10.052239729218648,
+        "tau": 2.0637894542298074,
+        "alpha": 0.8149657183035084,
+        "beta": 4.03687066773864,
+        "T_a": 0.020465718576740066
+      },
+      "at_bound": [
+        "T_a=low"
+      ]
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.2222430261606356,
+      "test_spacing_rmse": 3.965985586819286,
+      "test_speed_rmse": 0.4238250821964999,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 10.918949539234578,
+        "tau": 2.0431819399786555,
+        "alpha": 0.9549111464656883,
+        "beta": 4.6996120368652825,
+        "T_a": 0.01651399969587386
+      },
+      "at_bound": [
+        "T_a=low"
+      ]
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 3.028600421570905,
+      "test_spacing_rmse": 2.3003903773335135,
+      "test_speed_rmse": 0.12071756005766478,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 5.2361113891639,
+        "tau": 2.282159000411745,
+        "alpha": 0.8905697348516037,
+        "beta": 5.305400131153171,
+        "T_a": 0.015283790173616918
+      },
+      "at_bound": [
+        "T_a=low"
+      ]
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.3367505165430242,
+      "test_spacing_rmse": 3.9543640245109466,
+      "test_speed_rmse": 0.322813367722839,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 5.7236209344563544,
+        "tau": 2.2063347941745795,
+        "alpha": 0.723026731412701,
+        "beta": 4.244491240534948,
+        "T_a": 0.00657243243432859
+      },
+      "at_bound": [
+        "T_a=low"
+      ]
+    }
+  ]
+}

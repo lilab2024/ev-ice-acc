@@ -1,0 +1,8 @@
+# Data root directory (Google Drive path in Colab)
+data_root: /content/drive/MyDrive/slu_research/ev_vs_ice/data
+
+# All paths below are relative to data_root
+raw:
+  ice: raw/ice_acc
+  ev:  raw/ev_acc
+processed: processed

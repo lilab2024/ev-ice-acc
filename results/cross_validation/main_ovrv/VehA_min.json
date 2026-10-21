@@ -1,0 +1,72 @@
+{
+  "config": "VehA min",
+  "powertrain": "ICE",
+  "variant": "main_ovrv",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 0.8630137730811795,
+      "test_spacing_rmse": 1.6510219786622324,
+      "test_speed_rmse": 0.3159554592018588,
+      "test_collided": false,
+      "params": {
+        "k1": 0.053176231786776385,
+        "k2": 0.24485652326624474,
+        "eta": 11.871790876669046,
+        "tau": 0.8971808621549815
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.0882187856007064,
+      "test_spacing_rmse": 0.9588830731039303,
+      "test_speed_rmse": 0.1663760112687606,
+      "test_collided": false,
+      "params": {
+        "k1": 0.062107135420559234,
+        "k2": 0.24714387803207694,
+        "eta": 12.368368597456602,
+        "tau": 0.8821890312662439
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.0143189803337194,
+      "test_spacing_rmse": 1.5446981176335939,
+      "test_speed_rmse": 0.10086055517923626,
+      "test_collided": false,
+      "params": {
+        "k1": 0.05930003083388258,
+        "k2": 0.246513885171862,
+        "eta": 14.206037786428544,
+        "tau": 0.7882647692050939
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.1223128813921803,
+      "test_spacing_rmse": 0.8751457106332305,
+      "test_speed_rmse": 0.13669992713891596,
+      "test_collided": false,
+      "params": {
+        "k1": 0.0600710330916186,
+        "k2": 0.23164600207671016,
+        "eta": 11.038041739137014,
+        "tau": 0.9281372625188139
+      },
+      "at_bound": []
+    }
+  ]
+}

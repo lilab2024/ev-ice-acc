@@ -1,0 +1,76 @@
+{
+  "config": "VehB min",
+  "powertrain": "ICE",
+  "variant": "ext_ovrv_lag",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.8069752962387344,
+      "test_spacing_rmse": 4.552163420250739,
+      "test_speed_rmse": 0.56680530410356,
+      "test_collided": false,
+      "params": {
+        "k1": 0.04235459126191865,
+        "k2": 0.15890168175033592,
+        "eta": 10.817964647854424,
+        "tau": 0.9030415488987261,
+        "T_a": 0.10467426573835814
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 3.371529119519573,
+      "test_spacing_rmse": 2.692909735020031,
+      "test_speed_rmse": 0.41001691017602787,
+      "test_collided": false,
+      "params": {
+        "k1": 0.04231215799905902,
+        "k2": 0.1617726847373978,
+        "eta": 11.175205258033113,
+        "tau": 0.8936740590729608,
+        "T_a": 0.5340195243074786
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 3.0043649758879702,
+      "test_spacing_rmse": 3.718020290639206,
+      "test_speed_rmse": 0.4124735051997137,
+      "test_collided": false,
+      "params": {
+        "k1": 0.04654131789628546,
+        "k2": 0.16843198095396517,
+        "eta": 12.78955672743172,
+        "tau": 0.8372527656986362,
+        "T_a": 0.5706360772782375
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 3.2516127788774924,
+      "test_spacing_rmse": 3.8395245486237286,
+      "test_speed_rmse": 0.2859775356349528,
+      "test_collided": false,
+      "params": {
+        "k1": 0.04443326442061346,
+        "k2": 0.1741654731995642,
+        "eta": 18.538254810649363,
+        "tau": 0.6410817881825754,
+        "T_a": 0.45768777162620355
+      },
+      "at_bound": []
+    }
+  ]
+}

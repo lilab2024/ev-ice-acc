@@ -1,0 +1,84 @@
+{
+  "config": "VehA min",
+  "powertrain": "ICE",
+  "variant": "base_gipps",
+  "fold_by": "profile",
+  "folds": [
+    {
+      "held_out": "dip",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.8860559473482164,
+      "test_spacing_rmse": 2.8579267102997825,
+      "test_speed_rmse": 0.6161372418599135,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 0.6279331738698479,
+        "a": 0.6477747844506818,
+        "B": 49.743516729864254,
+        "S": 10.868593549726349
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "osc",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 1.9082150377235463,
+      "test_spacing_rmse": 2.725018991094508,
+      "test_speed_rmse": 0.457269219820444,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 0.6215961235613789,
+        "a": 0.6182306168711518,
+        "B": 49.662970650697474,
+        "S": 11.101677166798396
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "stepH",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.3204608722178177,
+      "test_spacing_rmse": 1.5008913997963806,
+      "test_speed_rmse": 0.15490468260220994,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 0.6581058269537492,
+        "a": 0.6092345388509186,
+        "B": 49.550306046502634,
+        "S": 9.803178425564465
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    },
+    {
+      "held_out": "stepL",
+      "n_train": 3,
+      "n_test": 1,
+      "train_spacing_rmse": 2.179700101641854,
+      "test_spacing_rmse": 2.394230785592154,
+      "test_speed_rmse": 0.34869243670328404,
+      "test_collided": false,
+      "params": {
+        "V": 40.0,
+        "tau": 0.7075995205036236,
+        "a": 0.5519983187425055,
+        "B": 49.51323556098846,
+        "S": 7.356318227699149
+      },
+      "at_bound": [
+        "B=high"
+      ]
+    }
+  ]
+}

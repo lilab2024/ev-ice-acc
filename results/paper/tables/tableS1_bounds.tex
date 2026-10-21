@@ -1,0 +1,32 @@
+\begin{tabular}{lll}
+\toprule
+Model & Parameter & Bounds or fixed value \\
+\midrule
+IDM (main) & desired speed $v_0$ & 40~m/s (fixed) \\
+ & acceleration exponent $\delta$ & 20 (fixed) \\
+ & standstill gap $s_0$ & [0.5, 20]~m \\
+ & time gap $\tau$ & [0.3, 3.5]~s \\
+ & maximum acceleration $\alpha$ & [0.2, 4]~m/s$^2$ \\
+ & comfortable deceleration $\beta$ & [0.3, 100]~m/s$^2$ \\
+\midrule
+IDM (all parameters free) & desired speed $v_0$ & [25, 60]~m/s \\
+ & acceleration exponent $\delta$ & [1, 40] \\
+ & $s_0$, $\tau$, $\alpha$, $\beta$ & as IDM (main) \\
+\midrule
+OVRV & gap gain $k_1$ & [0.001, 1]~s$^{-2}$ \\
+ & relative-speed gain $k_2$ & [0, 2]~s$^{-1}$ \\
+ & standstill gap $\eta$ & [0, 25]~m \\
+ & time gap $\tau$ & [0.3, 3.5]~s \\
+\midrule
+IDM + lag, OVRV + lag & parameters of IDM (main) or OVRV & as above \\
+ & actuation lag $T_a$ & [0, 3]~s \\
+\midrule
+Newell & time shift $\tau$ & [0, 5]~s \\
+\midrule
+Gipps & reaction time $\tau$ & [0.1, 4]~s \\
+ & maximum acceleration $a$ & [0.2, 4]~m/s$^2$ \\
+ & braking rate $B$ (also used as estimate of the leader's) & [0.1, 50]~m/s$^2$ \\
+ & standstill distance $S$ & [0.5, 25]~m \\
+ & desired speed $V$ & 40~m/s (fixed) \\
+\bottomrule
+\end{tabular}

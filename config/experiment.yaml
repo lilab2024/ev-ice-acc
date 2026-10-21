@@ -1,0 +1,200 @@
+preprocess:
+  # Native sampling rates, verified from the data (ICE dt = 0.1 s, EV dt = 0.02 s)
+  native_hz: {ICE: 10, EV: 50}
+  # Both datasets are resampled to the same rate
+  target_hz: 10
+  # Savitzky-Golay filter, identical for both datasets (window given in seconds)
+  smoothing:
+    window_s: 1.0
+    polyorder: 2
+  # Time headway is not computed below this follower speed (m/s)
+  min_speed_for_headway: 0.45
+  # Length subtracted from the measured spacing to obtain the net gap (m).
+  # ICE spacing is already a bumper-to-bumper gap (GPS antenna positions corrected;
+  # Gunter et al. 2021). EV spacing is front bumper to front bumper (Lapardhaja et
+  # al. 2023), so the leader length is subtracted: IONIQ 5 followed a 2021 Toyota
+  # Camry (4.88 m), Model 3 and Polestar 2 a 2022 Toyota Corolla (4.63 m).
+  spacing_offset_m:
+    ICE: 0.0
+    EV: {"IONIQ 5": 4.88, "Model 3": 4.63, "Polestar 2": 4.63}
+
+qc:
+  # A run passes QC if its largest local mismatch between ds/dt and (v_l - v_f)
+  # stays below this value (m/s). Clean runs in both datasets stay below 0.45 m/s;
+  # all runs above 1.0 m/s come from one IONIQ 5 recording (0_desired, 55 mph, run 2).
+  max_kin_resid: 1.0
+  # A run also fails if the median net gap at standstill (v_f < 0.5 m/s) is negative:
+  # vehicles cannot overlap, so the spacing of the whole run is biased (constant
+  # offsets are invisible to the kinematic check). Runs without standstill are kept.
+  min_standstill_gap: 0.0
+
+calibration:
+  # One parameter set per vehicle x gap setting (18 configurations), all runs of a
+  # configuration calibrated jointly, each run weighted equally. Only QC-passed runs.
+  run_selection:
+    # Main results: EV runs restricted to the speed range covered by the ICE data
+    main:
+      ev_reduced_mph: [25, 35, 45]
+    # Supplementary results: all QC-passed EV runs, including stops and low speeds
+    supplementary:
+      ev_reduced_mph: [0, 15, 25, 35, 45]
+
+  # Parameter specification, IDENTICAL for ICE and EV.
+  #   [low, high] -> calibrated within these bounds
+  #   single value -> fixed, not calibrated
+  # All spacings are net gaps (EV spacing minus the leader length, see preprocess).
+  # The s0 / eta / S bounds were set before this was unified and remain wide enough.
+  params:
+    # Main IDM: free-road term switched off during car following (delta, v0 fixed).
+    # Identifiability check: with delta and v0 free, VehA min converged to tau and delta
+    # at their lower bounds (spacing RMSE -8.7 %), while IONIQ 5 Short converged by itself
+    # to delta ~ 23, v0 ~ 50 (RMSE unchanged). Fixing them keeps all parameters interior
+    # and comparable across vehicles.
+    idm:
+      v0:    40.0
+      delta: 20.0
+      s0:    [0.5, 20.0]
+      tau:   [0.3, 3.5]
+      alpha: [0.2, 4.0]
+      beta:  [0.3, 100.0]
+    # Supplementary IDM: all parameters free
+    idm_free:
+      v0:    [25.0, 60.0]
+      delta: [1.0, 40.0]
+      s0:    [0.5, 20.0]
+      tau:   [0.3, 3.5]
+      alpha: [0.2, 4.0]
+      beta:  [0.3, 100.0]
+    ovrv:
+      k1:  [0.001, 1.0]
+      k2:  [0.0, 2.0]
+      eta: [0.0, 25.0]
+      tau: [0.3, 3.5]
+
+    # EV-aware extension: first-order actuation lag T_a (s) between the commanded and the
+    # actual acceleration. T_a = 0 recovers the original model, so the fit cannot be worse.
+    idm_lag:
+      v0:    40.0
+      delta: 20.0
+      s0:    [0.5, 20.0]
+      tau:   [0.3, 3.5]
+      alpha: [0.2, 4.0]
+      beta:  [0.3, 100.0]
+      T_a:   [0.0, 3.0]
+    ovrv_lag:
+      k1:  [0.001, 1.0]
+      k2:  [0.0, 2.0]
+      eta: [0.0, 25.0]
+      tau: [0.3, 3.5]
+      T_a: [0.0, 3.0]
+
+    # Baselines with an explicit reaction time
+    # Newell (speed form): pure time delay, one parameter
+    newell:
+      tau: [0.0, 5.0]
+    # Gipps (relaxation form): braking estimate of the leader equal to B; V fixed
+    gipps:
+      tau: [0.1, 4.0]
+      a:   [0.2, 4.0]
+      B:   [0.1, 50.0]
+      S:   [0.5, 25.0]
+      V:   40.0
+
+  # Differential evolution settings (scipy.optimize.differential_evolution)
+  optimizer:
+    seed: 42
+    popsize: 15
+    maxiter: 200
+    tol: 0.001
+
+cross_validation:
+  # Folds are defined by disturbance type: calibrate on all other groups, test on the
+  # held-out group. ICE: speed profile (4 folds); EV: reduced speed (3 folds).
+  # Tests whether parameters transfer to a different disturbance form / magnitude.
+  fold_by: {ICE: profile, EV: v_reduced_mph}
+  variants: [main_idm, main_ovrv, ext_idm_lag, ext_ovrv_lag, base_newell, base_gipps]
+
+parameter_use:
+  # Configurations whose calibrated parameters are NOT used in the main stability
+  # analysis and ring-road simulations. Their data remain in the descriptive analysis.
+  exclude_from_main:
+    "Model 3 Short": >-
+      Both IDM and OVRV fail to represent this vehicle (spacing RMSE 4.3-5.4 m, 2-3x the
+      other EVs). Parameters are unstable: dropping the two 5_desired runs moves the OVRV
+      equilibrium
+
+human_driver:
+  # Human-driven baseline: IDM with the highway parameters of Treiber & Kesting (2013),
+  # Traffic Flow Dynamics. Not calibrated on our data; used as a reference only.
+  # All spacings in the analysis are net gaps (bumper to bumper), so the literature s0
+  # (a net gap) is used directly.
+  vehicle_length_m: 5.0
+  base:
+    v0:    33.3      # 120 km/h
+    s0:    2.0       # net gap
+    tau:   1.0       # time gap T
+    delta: 4.0
+    alpha: 1.0       # maximum acceleration a
+    beta:  1.5       # comfortable deceleration b
+  # Sensitivity analysis: every combination of these values replaces the base values
+  sensitivity:
+    tau:   [1.0, 1.5]
+    alpha: [0.7, 1.0, 1.5]
+
+stability:
+  # Linear string stability (lambda2, margin M) and frequency-domain platoon analysis
+  model: idm                        # parameters from the main IDM calibration
+  speeds: [10.0, 15.0, 20.0, 25.0]  # inside the calibrated speed range
+  v_ref: 20.0                       # reference speed for the main tables
+  mixed:
+    speeds: [15.0, 20.0, 25.0]
+    n_vehicles: 30
+    n_samples: 1000
+    seed: 0
+    shares: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+    human_lags: [0.0, 0.5, 1.0]      # human reaction lag T_a (s) for the human baseline
+  omega: {min: 0.001, max: 10.0, n: 2000}   # rad/s, log-spaced
+
+ring:
+  # Closed ring road with heterogeneous IDM vehicles (main IDM parameters for ACC,
+  # literature parameters for human drivers). Model parameters are NOT modified; a common
+  # hard speed cap acts as the ACC set speed and keeps every vehicle inside the calibrated
+  # speed range (the EV data reach about 27 m/s).
+  n_vehicles: 30
+  densities_veh_per_km: [15, 20, 25, 30, 40, 50, 60, 80, 100]
+  duration_s: 600.0
+  dt: 0.1
+  warmup_s: 120.0
+  speed_cap: 26.8              # m/s (60 mph), applied to every vehicle
+  initial_state: equilibrium   # common speed, each vehicle at its own equilibrium spacing
+  perturbation: {vehicle: 0, start_s: 60.0, decel: 3.0, duration_s: 2.0}
+  shares: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+  human_lag: 0.5               # human reaction lag T_a (s)
+  n_seeds: 30
+  stopped_speed: 0.5           # m/s, below this a vehicle counts as stopped
+  # Main analysis (A): growth of the perturbation while every vehicle stays inside the
+  # calibrated speed range. Densities whose equilibrium speed is below the range are
+  # skipped. Growth rate: slope of log(max |v - v_eq|) between the end of the
+  # perturbation + fit_start_s and the first exit from the range (or the end).
+  growth:
+    calibrated_speed_range: [11.0, 26.8]   # m/s
+    fit_start_s: 10.0
+    min_fit_s: 10.0                        # shorter fit windows are reported as NaN
+    perturbation_decel: 1.0                # m/s2 for the standard duration: a 2 m/s dip, so the
+                                           # run starts inside the range (v_eq - dip >= 11 m/s)
+  # Supplementary analysis (B): long run to the final stop-and-go state, with a common
+  # minimum spacing (vehicle length + 2 m standstill gap) that limits a vehicle's speed
+  # only when it would otherwise come closer than this to its leader.
+  long_run:
+    duration_s: 1200.0
+    warmup_s: 600.0
+    min_spacing: 2.0                        # m, net gap
+  # All spacings are net gaps. The ring length is shared between the vehicle bodies and
+  # the net gaps: sum of net gaps = ring length - n_vehicles * vehicle_length_m.
+  vehicle_length_m: 5.0
+
+examples:
+  # Example runs for the data and model-fit figures. The extracted samples are written to
+  # results/data_summary/example_runs.csv so the figures can be redrawn without raw data.
+  ice: {run_id: ICE_VehA_dip_min, config: VehA min, window_s: [420, 540]}
+  ev:  {run_id: EV_HyundaiIoniq5_Short_d0_55to25_r1, config: IONIQ 5 Short, window_s: null}

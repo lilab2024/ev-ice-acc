@@ -1,0 +1,66 @@
+{
+  "config": "Model 3 Short",
+  "powertrain": "EV",
+  "variant": "main_idm",
+  "fold_by": "v_reduced_mph",
+  "folds": [
+    {
+      "held_out": "25.0",
+      "n_train": 7,
+      "n_test": 4,
+      "train_spacing_rmse": 4.341803856036653,
+      "test_spacing_rmse": 8.616349195404553,
+      "test_speed_rmse": 1.1139244599568814,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 3.8172736329953594,
+        "tau": 1.2298896021352541,
+        "alpha": 0.606068737344347,
+        "beta": 2.0870630007412316
+      },
+      "at_bound": []
+    },
+    {
+      "held_out": "35.0",
+      "n_train": 6,
+      "n_test": 5,
+      "train_spacing_rmse": 4.545168773172636,
+      "test_spacing_rmse": 6.240264447001497,
+      "test_speed_rmse": 0.6266816355636552,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 0.509505681790948,
+        "tau": 1.5709100803031955,
+        "alpha": 0.673172414651152,
+        "beta": 0.5298578614061924
+      },
+      "at_bound": [
+        "s0=low"
+      ]
+    },
+    {
+      "held_out": "45.0",
+      "n_train": 9,
+      "n_test": 2,
+      "train_spacing_rmse": 5.270935467712145,
+      "test_spacing_rmse": 4.105868575183024,
+      "test_speed_rmse": 0.4310712225594649,
+      "test_collided": false,
+      "params": {
+        "v0": 40.0,
+        "delta": 20.0,
+        "s0": 0.5187360779702548,
+        "tau": 1.4660391508777944,
+        "alpha": 0.6373271044928623,
+        "beta": 1.0530664943792587
+      },
+      "at_bound": [
+        "s0=low"
+      ]
+    }
+  ]
+}

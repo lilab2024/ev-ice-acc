@@ -1,0 +1,270 @@
+{
+  "params": {
+    "v0": 40.0,
+    "delta": 20.0,
+    "s0": 3.4803873870922324,
+    "tau": 0.9668690083362599,
+    "alpha": 1.261647208232001,
+    "beta": 6.663847944096986
+  },
+  "objective": 2.0424163023567563,
+  "at_bound": [],
+  "per_run": {
+    "EV_HyundaiIoniq5_Short_d0_35to25_r1": {
+      "collided": false,
+      "spacing_rmse": 1.6415628195628333,
+      "speed_rmse": 0.30717904448379474,
+      "spacing_mape": 9.5058908477747,
+      "speed_mape": 1.892463620371361
+    },
+    "EV_HyundaiIoniq5_Short_d0_35to25_r2": {
+      "collided": false,
+      "spacing_rmse": 1.635545351749132,
+      "speed_rmse": 0.2873510594534096,
+      "spacing_mape": 10.113401889783198,
+      "speed_mape": 1.8464941432452746
+    },
+    "EV_HyundaiIoniq5_Short_d0_45to25_r1": {
+      "collided": false,
+      "spacing_rmse": 2.030941835190824,
+      "speed_rmse": 0.36165244367688937,
+      "spacing_mape": 10.219019805686367,
+      "speed_mape": 1.8651371220293447
+    },
+    "EV_HyundaiIoniq5_Short_d0_45to25_r2": {
+      "collided": false,
+      "spacing_rmse": 1.667781782832608,
+      "speed_rmse": 0.35427293305926544,
+      "spacing_mape": 5.916316211150523,
+      "speed_mape": 1.966393393980108
+    },
+    "EV_HyundaiIoniq5_Short_d0_45to35_r1": {
+      "collided": false,
+      "spacing_rmse": 1.0432187429875268,
+      "speed_rmse": 0.27601901293837167,
+      "spacing_mape": 4.568904354958123,
+      "speed_mape": 1.3028848746123558
+    },
+    "EV_HyundaiIoniq5_Short_d0_45to35_r2": {
+      "collided": false,
+      "spacing_rmse": 1.3638191792937047,
+      "speed_rmse": 0.3031729296934661,
+      "spacing_mape": 4.791041717309604,
+      "speed_mape": 1.4453315880110953
+    },
+    "EV_HyundaiIoniq5_Short_d0_55to25_r1": {
+      "collided": false,
+      "spacing_rmse": 0.906500224202403,
+      "speed_rmse": 0.30368229497657007,
+      "spacing_mape": 3.2414372603166686,
+      "speed_mape": 1.3165787754552698
+    },
+    "EV_HyundaiIoniq5_Short_d0_55to35_r1": {
+      "collided": false,
+      "spacing_rmse": 1.6177361879654966,
+      "speed_rmse": 0.4166888473788587,
+      "spacing_mape": 5.405577189471396,
+      "speed_mape": 1.8022516305832097
+    },
+    "EV_HyundaiIoniq5_Short_d0_55to45_r1": {
+      "collided": false,
+      "spacing_rmse": 2.082744849758123,
+      "speed_rmse": 0.2991868059128847,
+      "spacing_mape": 5.370825815639718,
+      "speed_mape": 0.9958371360273289
+    },
+    "EV_HyundaiIoniq5_Short_d0_55to45_r2": {
+      "collided": false,
+      "spacing_rmse": 1.7578243123978918,
+      "speed_rmse": 0.3993819733040525,
+      "spacing_mape": 6.541862322383382,
+      "speed_mape": 1.465238553916527
+    },
+    "EV_HyundaiIoniq5_Short_d0_60to25_r1": {
+      "collided": false,
+      "spacing_rmse": 1.5664971440083861,
+      "speed_rmse": 0.3307380222877374,
+      "spacing_mape": 5.636334915218842,
+      "speed_mape": 1.35875198413945
+    },
+    "EV_HyundaiIoniq5_Short_d0_60to25_r2": {
+      "collided": false,
+      "spacing_rmse": 1.4054448164008544,
+      "speed_rmse": 0.3681088604360669,
+      "spacing_mape": 5.16962474477716,
+      "speed_mape": 1.6521328637700754
+    },
+    "EV_HyundaiIoniq5_Short_d0_60to35_r1": {
+      "collided": false,
+      "spacing_rmse": 1.715513880836476,
+      "speed_rmse": 0.4738448014959787,
+      "spacing_mape": 6.17468720815102,
+      "speed_mape": 2.0092289795892713
+    },
+    "EV_HyundaiIoniq5_Short_d0_60to35_r2": {
+      "collided": false,
+      "spacing_rmse": 1.205311334531156,
+      "speed_rmse": 0.43686192852226896,
+      "spacing_mape": 4.319842197681285,
+      "speed_mape": 1.822159497585777
+    },
+    "EV_HyundaiIoniq5_Short_d0_60to45_r1": {
+      "collided": false,
+      "spacing_rmse": 1.5271404354421545,
+      "speed_rmse": 0.3830799421304393,
+      "spacing_mape": 4.820012197295165,
+      "speed_mape": 1.24837519264958
+    },
+    "EV_HyundaiIoniq5_Short_d0_60to45_r2": {
+      "collided": false,
+      "spacing_rmse": 2.02100968804223,
+      "speed_rmse": 0.3427284800792842,
+      "spacing_mape": 6.073477817721123,
+      "speed_mape": 1.067439608955677
+    },
+    "EV_HyundaiIoniq5_Short_d10_35to25_r1": {
+      "collided": false,
+      "spacing_rmse": 1.0533408305521568,
+      "speed_rmse": 0.24236440606178697,
+      "spacing_mape": 6.084814232330916,
+      "speed_mape": 1.412338197504857
+    },
+    "EV_HyundaiIoniq5_Short_d10_45to25_r1": {
+      "collided": false,
+      "spacing_rmse": 1.764455066938197,
+      "speed_rmse": 0.3367590753796532,
+      "spacing_mape": 7.410537295414763,
+      "speed_mape": 1.6476058403941765
+    },
+    "EV_HyundaiIoniq5_Short_d10_45to35_r1": {
+      "collided": false,
+      "spacing_rmse": 2.2963627547573995,
+      "speed_rmse": 0.2669182466071759,
+      "spacing_mape": 8.537973113294084,
+      "speed_mape": 1.0381079016757224
+    },
+    "EV_HyundaiIoniq5_Short_d10_55to25_r1": {
+      "collided": false,
+      "spacing_rmse": 1.3119313877427097,
+      "speed_rmse": 0.3211062709314209,
+      "spacing_mape": 5.303316952799135,
+      "speed_mape": 1.4854890845133635
+    },
+    "EV_HyundaiIoniq5_Short_d10_55to35_r1": {
+      "collided": false,
+      "spacing_rmse": 2.105272047554364,
+      "speed_rmse": 0.3825652655211557,
+      "spacing_mape": 8.599518393642324,
+      "speed_mape": 1.557012910496231
+    },
+    "EV_HyundaiIoniq5_Short_d10_55to45_r1": {
+      "collided": false,
+      "spacing_rmse": 1.6643881711735147,
+      "speed_rmse": 0.33430809545504214,
+      "spacing_mape": 5.5986766017681235,
+      "speed_mape": 1.1712285150886064
+    },
+    "EV_HyundaiIoniq5_Short_d10_60to25_r1": {
+      "collided": false,
+      "spacing_rmse": 2.8175161369737194,
+      "speed_rmse": 0.3597605528735414,
+      "spacing_mape": 10.558982276722903,
+      "speed_mape": 1.533034519345891
+    },
+    "EV_HyundaiIoniq5_Short_d10_60to35_r1": {
+      "collided": false,
+      "spacing_rmse": 3.692779431089281,
+      "speed_rmse": 0.4357331967240638,
+      "spacing_mape": 11.63056682237415,
+      "speed_mape": 1.7584550630847562
+    },
+    "EV_HyundaiIoniq5_Short_d10_60to45_r1": {
+      "collided": false,
+      "spacing_rmse": 5.266133922061293,
+      "speed_rmse": 0.43116209489811236,
+      "spacing_mape": 14.835185085590123,
+      "speed_mape": 1.376101799580469
+    },
+    "EV_HyundaiIoniq5_Short_d5_35to25_r1": {
+      "collided": false,
+      "spacing_rmse": 1.4235138823007174,
+      "speed_rmse": 0.3209999230251291,
+      "spacing_mape": 8.441171711772903,
+      "speed_mape": 1.7259088582803461
+    },
+    "EV_HyundaiIoniq5_Short_d5_45to25_r1": {
+      "collided": false,
+      "spacing_rmse": 0.8240112349328083,
+      "speed_rmse": 0.3070938534891324,
+      "spacing_mape": 3.1017996707810065,
+      "speed_mape": 1.4994429573347423
+    },
+    "EV_HyundaiIoniq5_Short_d5_45to35_r1": {
+      "collided": false,
+      "spacing_rmse": 2.5198304678475387,
+      "speed_rmse": 0.28994777612089395,
+      "spacing_mape": 9.436509125466728,
+      "speed_mape": 1.1843640637203885
+    },
+    "EV_HyundaiIoniq5_Short_d5_55to25_r1": {
+      "collided": false,
+      "spacing_rmse": 1.2037364395793821,
+      "speed_rmse": 0.308599712922817,
+      "spacing_mape": 4.402081260351259,
+      "speed_mape": 1.423671715973799
+    },
+    "EV_HyundaiIoniq5_Short_d5_55to35_r1": {
+      "collided": false,
+      "spacing_rmse": 1.4870400007263245,
+      "speed_rmse": 0.3940619935255539,
+      "spacing_mape": 4.727690089590399,
+      "speed_mape": 1.5633395455395962
+    },
+    "EV_HyundaiIoniq5_Short_d5_55to45_r1": {
+      "collided": false,
+      "spacing_rmse": 3.0272475653911037,
+      "speed_rmse": 0.3406288410152476,
+      "spacing_mape": 9.907343769299436,
+      "speed_mape": 1.1031598969220138
+    },
+    "EV_HyundaiIoniq5_Short_d5_60to25_r1": {
+      "collided": false,
+      "spacing_rmse": 3.121339962994714,
+      "speed_rmse": 0.3688425918528995,
+      "spacing_mape": 12.541702090134182,
+      "speed_mape": 1.5385369190527232
+    },
+    "EV_HyundaiIoniq5_Short_d5_60to35_r1": {
+      "collided": false,
+      "spacing_rmse": 4.471976612915523,
+      "speed_rmse": 0.4420796367271732,
+      "spacing_mape": 18.351893427854677,
+      "speed_mape": 1.7577521927668611
+    },
+    "EV_HyundaiIoniq5_Short_d5_60to45_r1": {
+      "collided": false,
+      "spacing_rmse": 4.202685779397157,
+      "speed_rmse": 0.4645677757036143,
+      "spacing_mape": 17.11111769497601,
+      "speed_mape": 1.4800549879967904
+    }
+  },
+  "free": [
+    "s0",
+    "tau",
+    "alpha",
+    "beta"
+  ],
+  "fixed": {
+    "v0": 40.0,
+    "delta": 20.0
+  },
+  "nfev": 38,
+  "nit": 37,
+  "success": true,
+  "message": "Optimization terminated successfully.",
+  "seconds": 21.5,
+  "config": "IONIQ 5 Short",
+  "powertrain": "EV",
+  "variant": "main_idm"
+}
