@@ -51,4 +51,6 @@ def load_or_build(paths, res_dir, main_sel):
                            columns=["run_id", "t", "v_l", "v_f"])
     curves = build_event_curves(traj, ev)
     curves.round(4).to_csv(cache, index=False)
-    return curves
+    # Return the cached version so that the figure is identical whether or not the
+    # cache existed before (the cache is rounded to 4 decimals)
+    return pd.read_csv(cache)
