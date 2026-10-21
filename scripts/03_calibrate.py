@@ -25,24 +25,9 @@ import pandas as pd
 from src.calibration.objective import prepare_runs, split_spec
 from src.calibration.optimizer import bound_flags, calibrate
 from src.calibration.selection import list_configs, select_runs
+from src.calibration.variants import MODELS, VARIANTS
 from src.config import REPO_ROOT, load_paths, load_yaml
-from src.models import gipps, idm, newell, ovrv
 
-MODELS = {"idm": idm, "ovrv": ovrv, "newell": newell, "gipps": gipps}
-
-# name: (model, parameter spec key in experiment.yaml, run selection)
-VARIANTS = {
-    "main_idm":          ("idm",  "idm",      "main"),
-    "main_ovrv":         ("ovrv", "ovrv",     "main"),
-    "supp_idm_free":     ("idm",  "idm_free", "main"),
-    "supp_idm_allruns":  ("idm",  "idm",      "supplementary"),
-    "supp_ovrv_allruns": ("ovrv", "ovrv",     "supplementary"),
-    # EV-aware extensions (actuation lag) and baselines with explicit reaction time
-    "ext_idm_lag":       ("idm",    "idm_lag",  "main"),
-    "ext_ovrv_lag":      ("ovrv",   "ovrv_lag", "main"),
-    "base_newell":       ("newell", "newell",   "main"),
-    "base_gipps":        ("gipps",  "gipps",    "main"),
-}
 DEFAULT_VARIANTS = ["main_idm", "main_ovrv"]
 
 

@@ -20,19 +20,8 @@ import pandas as pd
 
 from src.calibration.cross_validation import cross_validate
 from src.calibration.selection import list_configs, select_runs
+from src.calibration.variants import MODELS, VARIANTS
 from src.config import REPO_ROOT, load_paths, load_yaml
-from src.models import gipps, idm, newell, ovrv
-
-MODELS = {"idm": idm, "ovrv": ovrv, "newell": newell, "gipps": gipps}
-# Same definitions as in 03_calibrate.py: (model, parameter spec key, run selection)
-VARIANTS = {
-    "main_idm":  ("idm",  "idm",  "main"),
-    "main_ovrv": ("ovrv", "ovrv", "main"),
-    "ext_idm_lag":  ("idm",    "idm_lag",  "main"),
-    "ext_ovrv_lag": ("ovrv",   "ovrv_lag", "main"),
-    "base_newell":  ("newell", "newell",   "main"),
-    "base_gipps":   ("gipps",  "gipps",    "main"),
-}
 
 
 def summarize(variant, out_dir):
