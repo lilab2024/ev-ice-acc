@@ -5,8 +5,6 @@ from scipy import stats
 
 from src.analysis.events import run_events
 
-DROP_BINS = [1.5, 3, 5, 7, 12]
-DROP_LABELS = ["1.5-3", "3-5", "5-7", "7-12"]
 EVENT_METRICS = ["amplification", "overshoot", "delay_s", "decel_ratio"]
 
 
@@ -17,12 +15,15 @@ def cohens_d(x, y):
     return (x.mean() - y.mean()) / pooled
 
 
-def describe_by_vehicle(df, col):
-    """Mean, median, min, max, std, n and hours of `col` per vehicle and pooled."""
+def describe_by_vehicle(df, col, hz):
+    """Mean, median, min, max, std, n and hours of `col` per vehicle and pooled.
+
+    hz: sampling rate of the data (samples per second), used for the hours.
+    """
     def summary(g):
         out = pd.DataFrame({"mean": g.mean(), "median": g.median(), "min": g.min(),
                             "max": g.max(), "std": g.std(), "n": g.size()})
-        out["hours"] = out["n"] / 10 / 3600
+        out["hours"] = out["n"] / hz / 3600
         return out
     per_vehicle = summary(df.groupby(["powertrain", "vehicle"])[col])
     pooled = summary(df.groupby("powertrain")[col])
@@ -31,7 +32,7 @@ def describe_by_vehicle(df, col):
 
 
 def pooled_comparison(df, scope):
-    """Sample-level ICE vs EV comparison as in the submitted paper (Table 6)."""
+    """Sample-level ICE vs EV comparison as in Table 6 of the originally submitted paper."""
     ice, ev = df[df["powertrain"] == "ICE"], df[df["powertrain"] == "EV"]
     rows = []
     for col, name in [("s", "Spacing (m)"), ("v_f", "Follow speed (m/s)"),
@@ -44,12 +45,12 @@ def pooled_comparison(df, scope):
     return pd.DataFrame(rows)
 
 
-def steady_state_headway(df, speed_range=(15, 27), bin_width=2.0, a_max=0.2, dv_max=0.3,
-                         min_samples=50):
+def steady_state_headway(df, speed_range, bin_width, a_max, dv_max, min_samples):
     """Median time headway per configuration and speed bin during steady following.
 
     Steady following: |a_f| < a_max and |v_l - v_f| < dv_max. Cells with fewer than
     min_samples samples are NaN. Returns a long table (config, speed_bin, headway, n).
+    Settings: statistics.steady_state in experiment.yaml.
     """
     d = df[(df["a_f"].abs() < a_max) & (df["dv"].abs() < dv_max)
            & df["v_f"].between(*speed_range)].copy()
@@ -62,8 +63,13 @@ def steady_state_headway(df, speed_range=(15, 27), bin_width=2.0, a_max=0.2, dv_
     return out
 
 
-def extract_events(df, meta_cols):
-    """Leader deceleration events of every run, with run metadata attached."""
+def extract_events(df, meta_cols, drop_bins):
+    """Leader deceleration events of every run, with run metadata attached.
+
+    Events are grouped by the leader speed drop into the intervals given by drop_bins
+    (e.g. [1.5, 3, 5, 7, 12] -> "1.5-3", ..., "7-12"). Events outside these intervals get
+    no bin (NaN) and are not used in the binned comparison.
+    """
     tables = []
     for run_id, d in df.groupby("run_id"):
         run = {c: d[c].values for c in ["t", "v_l", "v_f", "s", "a_l", "a_f"]}
@@ -76,7 +82,8 @@ def extract_events(df, meta_cols):
     ev = pd.concat(tables, ignore_index=True)
     ev["config"] = ev["vehicle"] + " " + ev["gap"]
     ev["overshoot"] = ev["drop_follower"] - ev["drop_leader"]
-    ev["drop_bin"] = pd.cut(ev["drop_leader"], bins=DROP_BINS, labels=DROP_LABELS)
+    labels = [f"{lo:g}-{hi:g}" for lo, hi in zip(drop_bins[:-1], drop_bins[1:])]
+    ev["drop_bin"] = pd.cut(ev["drop_leader"], bins=drop_bins, labels=labels)
     return ev
 
 

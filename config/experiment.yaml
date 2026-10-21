@@ -127,6 +127,21 @@ parameter_use:
       equilibrium headway at 20 m/s from 2.12 to 2.93 s (measured: 1.73 s at 19-21 m/s),
       with eta at its upper bound in both fits.
 
+statistics:
+  # Steady following (step 04, Table 4): |a_f| < a_max and |v_l - v_f| < dv_max, follower
+  # speed in bins of bin_width m/s; bins with fewer than min_samples samples (5 s at 10 Hz)
+  # are not reported.
+  steady_state:
+    speed_range: [15, 27]
+    bin_width: 2.0
+    a_max: 0.2
+    dv_max: 0.3
+    min_samples: 50
+  # Leader deceleration events are grouped by the leader speed drop (m/s). Larger drops
+  # than the last edge occur only in the EV campaign (143 events, 35 in the main selection;
+  # the largest ICE drop is 10.9 m/s), have no ICE counterpart and are not binned.
+  drop_bins: [1.5, 3, 5, 7, 12]
+
 counterfactual:
   # Same-leader test (step 04): every configuration with its main IDM / OVRV parameters
   # follows the same recorded leaders, which removes the difference between the leader

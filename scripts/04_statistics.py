@@ -39,22 +39,24 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     data, runs = load_data(paths)
     main_sel = cfg["calibration"]["run_selection"]["main"]["ev_reduced_mph"]
+    st = cfg["statistics"]
+    hz = cfg["preprocess"]["target_hz"]
     print(f"Data: {data['run_id'].nunique()} runs, {len(data)} samples")
 
     # 1. Descriptive statistics and the paper's pooled comparison
-    describe_by_vehicle(data, "v_f").to_csv(out / "descriptive_speed.csv")
-    describe_by_vehicle(data, "s").to_csv(out / "descriptive_spacing.csv")
+    describe_by_vehicle(data, "v_f", hz).to_csv(out / "descriptive_speed.csv")
+    describe_by_vehicle(data, "s", hz).to_csv(out / "descriptive_spacing.csv")
     pd.concat([pooled_comparison(data, "Full dataset"),
                pooled_comparison(data[data["v_f"].between(15, 25)], "Overlap 15-25 m/s")]
               ).to_csv(out / "pooled_comparison.csv", index=False)
     print("1. descriptive statistics and pooled comparison written")
 
     # 2. Steady-state headway at matched speed and gap setting
-    steady_state_headway(data).to_csv(out / "steady_headway.csv", index=False)
+    steady_state_headway(data, **st["steady_state"]).to_csv(out / "steady_headway.csv", index=False)
     print("2. steady-state headway written")
 
     # 3. Event-level analysis (main run selection)
-    ev = extract_events(data, META)
+    ev = extract_events(data, META, st["drop_bins"])
     ev.to_csv(out / "events.csv", index=False)
     ev_main = ev[(ev["powertrain"] == "ICE") | ev["v_reduced_mph"].isin(main_sel)]
     medians = per_config_medians(ev_main)
@@ -63,7 +65,9 @@ def main():
     tests.to_csv(out / "event_tests.csv", index=False)
     (ev_main.groupby(["drop_bin", "powertrain"], observed=True)["peak_decel_leader"]
             .describe()).to_csv(out / "leader_decel.csv")
-    print(f"3. {len(ev)} events ({len(ev_main)} in the main selection); tests:")
+    n_unbinned = int(ev["drop_bin"].isna().sum())
+    print(f"3. {len(ev)} events ({len(ev_main)} in the main selection); {n_unbinned} with a "
+          f"leader drop above {st['drop_bins'][-1]} m/s (EV only) are not binned; tests:")
     print(tests.round(4).to_string(index=False))
 
     # 4. Counterfactual 'same leader' test, for IDM and OVRV
