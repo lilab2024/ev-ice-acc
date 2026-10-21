@@ -1,5 +1,6 @@
 # ICE: vehicle code in raw file names -> name used in the paper
-# VehC is a hybrid and is excluded; the remaining vehicles are renumbered in the paper
+# VehC is a hybrid and is excluded; the remaining vehicles are renumbered in the paper.
+# run_ids keep the raw code: ICE_VehD_* is VehC in the paper, ICE_VehG_* is VehF.
 ice:
   A: {paper_name: VehA}
   B: {paper_name: VehB}
@@ -9,7 +10,8 @@ ice:
   F: {paper_name: VehE}
   G: {paper_name: VehF}
 
-# EV: folder name on Drive (must match exactly) -> name used in the paper
+# EV: folder name in the raw data (must match exactly) -> name used in the paper.
+# run_ids keep the folder name: EV_Tesla_* is Model 3, EV_Polestar_* is Polestar 2.
 ev:
   "Hyundai Ioniq 5": {paper_name: IONIQ 5}
   "Tesla":           {paper_name: Model 3}

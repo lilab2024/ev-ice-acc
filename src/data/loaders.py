@@ -1,4 +1,5 @@
 """Raw data loading for the ICE and EV ACC datasets."""
+import hashlib
 import re
 import warnings
 from pathlib import Path
@@ -22,6 +23,9 @@ def list_ice_runs(ice_dir, ice_cfg):
         info = ice_cfg.get(m["veh"])
         if info is None:
             raise KeyError(f"ICE vehicle {m['veh']} not found in vehicles.yaml ({f.name})")
+        # run_id keeps the raw vehicle code from the file name, which differs from
+        # the paper name for C-G (e.g. ICE_VehD_* is VehC in the paper; raw C is
+        # excluded). The paper name is in the column "vehicle".
         rows.append(dict(
             run_id=f"ICE_Veh{m['veh']}_{m['profile']}_{m['setting']}",
             powertrain="ICE",
@@ -39,8 +43,6 @@ def list_ice_runs(ice_dir, ice_cfg):
 # ---------------------------------------------------------------------------
 # EV runs
 # ---------------------------------------------------------------------------
-import hashlib
-
 # Folder name for the desired-speed offset, e.g. 0_desired, 5_desired
 DESIRED_RE = re.compile(r"^(?P<x>\d+)_desired$")
 
@@ -96,6 +98,8 @@ def list_ev_runs(ev_dir, ev_cfg):
         warnings.warn(f"Duplicate file ignored: {p}")
     df = df.loc[~dup].drop(columns=["md5", "folder", "is_copy"])
 
+    # run_id keeps the raw folder name (e.g. Tesla = Model 3, Polestar = Polestar 2);
+    # the paper name is in the column "vehicle".
     df["run_id"] = ("EV_" + df["raw_vehicle"].str.replace(" ", "") + "_" + df["gap"]
                     + "_d" + df["desired_mph"].astype(str)
                     + "_" + df["v_free_mph"].astype(str) + "to" + df["v_reduced_mph"].astype(str)
@@ -137,8 +141,8 @@ def load_raw_run(row):
 
     ICE files have NO header row. Column order (time, follower speed, leader speed,
     spacing) was verified with the kinematic check ds/dt = v_l - v_f.
-    EV files: only the raw speed columns are used (km/h); smoothing is applied later
-    to both datasets in the same way.
+    EV files: only the time, speed (km/h) and spacing columns are used; smoothing is
+    applied later to both datasets in the same way.
     """
     if row["powertrain"] == "ICE":
         d = pd.read_csv(row["path"], header=None, names=["time", "v_f", "v_l", "s"])
@@ -149,8 +153,18 @@ def load_raw_run(row):
                               "Speed Leader": "v_l", "Spacing": "s"})
         d[["v_f", "v_l"]] *= KMH_TO_MS
 
-    d = d.apply(pd.to_numeric, errors="coerce").dropna().reset_index(drop=True)
-    if not np.all(np.diff(d["time"].values) > 0):
+    d = d.apply(pd.to_numeric, errors="coerce")
+    n_bad = int(d.isna().any(axis=1).sum())
+    if n_bad:
+        warnings.warn(f"{n_bad} rows with missing or non-numeric values dropped: "
+                      f"{row['path']}")
+    d = d.dropna().reset_index(drop=True)
+
+    dt = np.diff(d["time"].values)
+    if not np.all(dt > 0):
         raise ValueError(f"Time stamps are not strictly increasing: {row['path']}")
+    if dt.max() > 1.5 * np.median(dt):
+        warnings.warn(f"Gap in time stamps (max {dt.max():.3f} s, median "
+                      f"{np.median(dt):.3f} s): {row['path']}")
     d["time"] -= d["time"].iloc[0]          # start every run at t = 0
     return d

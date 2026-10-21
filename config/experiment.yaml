@@ -21,12 +21,14 @@ preprocess:
 qc:
   # A run passes QC if its largest local mismatch between ds/dt and (v_l - v_f)
   # stays below this value (m/s). Clean runs in both datasets stay below 0.45 m/s;
-  # all runs above 1.0 m/s come from one IONIQ 5 recording (0_desired, 55 mph, run 2).
+  # all runs above 1.0 m/s are run 2 of the IONIQ 5 0_desired, 55 mph experiments.
   max_kin_resid: 1.0
   # A run also fails if the median net gap at standstill (v_f < 0.5 m/s) is negative:
   # vehicles cannot overlap, so the spacing of the whole run is biased (constant
   # offsets are invisible to the kinematic check). Runs without standstill are kept.
   min_standstill_gap: 0.0
+  # Follower speed below which a sample counts as standstill (m/s)
+  standstill_speed: 0.5
 
 calibration:
   # One parameter set per vehicle x gap setting (18 configurations), all runs of a

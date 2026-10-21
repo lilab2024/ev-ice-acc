@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np
 import pandas as pd
 
-from src.config import load_paths, load_yaml
+from src.config import REPO_ROOT, load_paths, load_yaml
 from src.data.loaders import build_manifest, load_raw_run
 from src.data.preprocess import preprocess_run
 
@@ -58,21 +58,23 @@ def main():
     traj = pd.concat(trajs, ignore_index=True)
     qc = pd.DataFrame(qcs)
     qc["qc_kinematic"] = qc["kin_resid_max"] <= cfg["qc"]["max_kin_resid"]
+    # Runs without standstill have a NaN median gap; NaN < threshold is False,
+    # so these runs pass the standstill check.
     qc["qc_standstill"] = ~(qc["standstill_gap_median"] < cfg["qc"]["min_standstill_gap"])
     qc["qc_pass"] = qc["qc_kinematic"] & qc["qc_standstill"]
     traj.to_parquet(out_dir / "trajectories_10hz.parquet", index=False)
     qc.to_csv(out_dir / "runs_qc.csv", index=False)
     # copies without local file paths, published with the results
-    summary = Path(__file__).resolve().parents[1] / "results" / "data_summary"
-    summary.mkdir(parents=True, exist_ok=True)
-    manifest.drop(columns="path").to_csv(summary / "runs_manifest.csv", index=False)
-    qc.to_csv(summary / "runs_qc.csv", index=False)
+    summary_dir = REPO_ROOT / "results" / "data_summary"
+    summary_dir.mkdir(parents=True, exist_ok=True)
+    manifest.drop(columns="path").to_csv(summary_dir / "runs_manifest.csv", index=False)
+    qc.to_csv(summary_dir / "runs_qc.csv", index=False)
 
     # 4. Summary
     summary = (qc.merge(use[["run_id", "powertrain", "vehicle"]], on="run_id")
                  .groupby(["powertrain", "vehicle"])
                  .agg(runs=("run_id", "size"),
-                      runs_qc_pass=("qc_pass", "sum"),                      # NEW
+                      runs_qc_pass=("qc_pass", "sum"),
                       samples=("n_samples", "sum"),
                       kin_slope_min=("kin_slope", "min"),
                       kin_slope_max=("kin_slope", "max")))

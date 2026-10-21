@@ -29,6 +29,8 @@ def smooth_and_resample(raw, native_hz, target_hz, window_s=1.0, polyorder=2):
 
     smoothed = {c: savgol_filter(raw[c].values, w, polyorder, mode="interp")
                 for c in ["v_f", "v_l", "s"]}
+    # Accelerations are derivatives of the unclipped smoothed speeds; clipping in
+    # add_derived only removes tiny negative values at standstill.
     smoothed["a_f"] = savgol_filter(raw["v_f"].values, w, polyorder,
                                     deriv=1, delta=dt, mode="interp")
     smoothed["a_l"] = savgol_filter(raw["v_l"].values, w, polyorder,
@@ -46,7 +48,6 @@ def add_derived(df, spacing_offset_m=0.0, min_speed_for_headway=0.45):
 
     dv      = v_l - v_f              (positive: leader is faster)
     s       = net gap: measured spacing - spacing_offset_m (raw value kept as s_raw)
-    s_net   = s (kept for compatibility)
     headway = s / v_f                (NaN when v_f < min_speed_for_headway)
     """
     df = df.copy()
@@ -56,13 +57,12 @@ def add_derived(df, spacing_offset_m=0.0, min_speed_for_headway=0.45):
     df["dv"] = df["v_l"] - df["v_f"]
     df["s_raw"] = df["s"]
     df["s"] = df["s"] - spacing_offset_m      # all later steps use the net gap
-    df["s_net"] = df["s"]
     df["headway"] = np.where(df["v_f"] >= min_speed_for_headway,
                              df["s"] / df["v_f"].where(df["v_f"] > 0), np.nan)
     return df
 
 
-def run_qc(df):
+def run_qc(df, standstill_speed=0.5):
     """Quality-check metrics for one processed run.
 
     kin_slope    : slope of ds/dt regressed on (v_l - v_f); should be close to 1.
@@ -77,8 +77,8 @@ def run_qc(df):
         corr = np.corrcoef(x[ok], ds_dt[ok])[0, 1]
     else:
         slope, corr = np.nan, np.nan
-    resid = ds_dt[ok] - x[ok]                                  # NEW
-    stopped = df["v_f"] < 0.5
+    resid = ds_dt[ok] - x[ok]
+    stopped = df["v_f"] < standstill_speed
     stand_gap = float(df.loc[stopped, "s"].median()) if stopped.any() else np.nan
     return dict(n_samples=len(df),
                 duration_s=float(df["t"].iloc[-1]),
@@ -86,8 +86,8 @@ def run_qc(df):
                 s_min=df["s"].min(), s_max=df["s"].max(),
                 a_f_min=df["a_f"].min(), a_f_max=df["a_f"].max(),
                 kin_slope=slope, kin_corr=corr,
-                kin_resid_rms=float(np.sqrt(np.mean(resid ** 2))),   # NEW
-                kin_resid_max=float(np.max(np.abs(resid))),          # NEW
+                kin_resid_rms=float(np.sqrt(np.mean(resid ** 2))),
+                kin_resid_max=float(np.max(np.abs(resid))),
                 standstill_gap_median=stand_gap)
 
 
@@ -108,4 +108,4 @@ def preprocess_run(raw, powertrain, cfg, vehicle=None):
     df = add_derived(df,
                      spacing_offset_m=offset,
                      min_speed_for_headway=p["min_speed_for_headway"])
-    return df, run_qc(df)
+    return df, run_qc(df, standstill_speed=cfg["qc"]["standstill_speed"])
