@@ -15,15 +15,11 @@ from src.analysis.comparison import (config_level_tests, describe_by_vehicle,
                                      extract_events, per_config_medians,
                                      pooled_comparison, steady_state_headway)
 from src.analysis.counterfactual import same_leader_events
+from src.calibration.variants import MODELS
 from src.config import REPO_ROOT, load_paths, load_yaml
-from src.models import idm, ovrv
 
-MODELS = {"idm": idm, "ovrv": ovrv}
 META = ["powertrain", "vehicle", "gap", "profile", "desired_mph", "v_free_mph",
         "v_reduced_mph", "run"]
-# Common leaders for the counterfactual test
-ICE_LEADER_RUNS = ["ICE_VehA_osc_min", "ICE_VehA_dip_min"]
-EV_LEADER_FILTER = dict(vehicle="IONIQ 5", gap="Short", desired_mph=0, run="1")
 
 
 def load_data(paths):
@@ -71,7 +67,9 @@ def main():
     print(tests.round(4).to_string(index=False))
 
     # 4. Counterfactual 'same leader' test, for IDM and OVRV
-    f = EV_LEADER_FILTER
+    cf_cfg = cfg["counterfactual"]
+    f = cf_cfg["ev_leader"]
+    ice_leader_runs = cf_cfg["ice_leader_runs"]
     ev_leader_ids = runs[(runs["vehicle"] == f["vehicle"]) & (runs["gap"] == f["gap"])
                          & (runs["desired_mph"] == f["desired_mph"]) & (runs["run"] == f["run"])
                          & runs["v_reduced_mph"].isin(main_sel)]["run_id"].tolist()
@@ -80,10 +78,11 @@ def main():
         return {i: {c: data.loc[data["run_id"] == i, c].values for c in ["t", "v_l", "a_l"]}
                 for i in ids}
     leaders = {"EV-experiment leader": leader_arrays(ev_leader_ids),
-               "ICE-experiment leader": leader_arrays(ICE_LEADER_RUNS)}
+               "ICE-experiment leader": leader_arrays(ice_leader_runs)}
     excluded = list(cfg["parameter_use"]["exclude_from_main"])
 
-    for name, model in MODELS.items():
+    for name in cf_cfg["models"]:
+        model = MODELS[name]
         params = pd.read_csv(REPO_ROOT / "results" / "calibration" / f"main_{name}_params.csv")
         params = params[~params["config"].isin(excluded)]
         cf = same_leader_events(model, params, leaders)
@@ -93,7 +92,7 @@ def main():
         cf_tests = config_level_tests(cf_med, by="leader_set", levels=list(leaders))
         cf_tests.to_csv(out / f"counterfactual_{name}_tests.csv", index=False)
         print(f"4. counterfactual test with {name.upper()} "
-              f"({len(ev_leader_ids)} EV + {len(ICE_LEADER_RUNS)} ICE leader runs):")
+              f"({len(ev_leader_ids)} EV + {len(ice_leader_runs)} ICE leader runs):")
         print(cf_tests.round(4).to_string(index=False))
 
     print(f"\nOutputs written to {out}")

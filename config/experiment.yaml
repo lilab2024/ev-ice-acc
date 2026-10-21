@@ -127,6 +127,15 @@ parameter_use:
       equilibrium headway at 20 m/s from 2.12 to 2.93 s (measured: 1.73 s at 19-21 m/s),
       with eta at its upper bound in both fits.
 
+counterfactual:
+  # Same-leader test (step 04): every configuration with its main IDM / OVRV parameters
+  # follows the same recorded leaders, which removes the difference between the leader
+  # disturbances of the two campaigns. EV-experiment leaders: run 1 of IONIQ 5 Short,
+  # 0_desired, at the main reduced speeds; ICE-experiment leaders: two VehA min runs.
+  models: [idm, ovrv]
+  ice_leader_runs: [ICE_VehA_osc_min, ICE_VehA_dip_min]
+  ev_leader: {vehicle: IONIQ 5, gap: Short, desired_mph: 0, run: "1"}
+
 human_driver:
   # Human-driven baseline: IDM with the highway parameters of Treiber & Kesting (2013),
   # Traffic Flow Dynamics. Not calibrated on our data; used as a reference only.
