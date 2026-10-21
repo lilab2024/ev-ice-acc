@@ -7,7 +7,7 @@ from scipy.optimize import differential_evolution
 from src.calibration.objective import objective_batch, run_errors, split_spec, to_params
 
 
-def bound_flags(free_names, bounds, values, rel_tol=0.01):                    # NEW
+def bound_flags(free_names, bounds, values, rel_tol=0.01):
     """Names of parameters lying at a bound.
 
     Positive lower bound: tolerance is rel_tol of the range on a log scale, so a wide
@@ -49,7 +49,7 @@ def calibrate(model, spec, runs, seed=42, popsize=15, maxiter=200, tol=1e-3):
     params = to_params(res.x, free_names, fixed)
     per_run = {run["run_id"]: run_errors(model, params, run) for run in runs}
     return dict(params=params, objective=float(res.fun),
-                at_bound=bound_flags(free_names, bounds, res.x),                # NEW
+                at_bound=bound_flags(free_names, bounds, res.x),
                 per_run=per_run, free=free_names, fixed=fixed,
                 nfev=int(res.nfev), nit=int(res.nit), success=bool(res.success),
                 message=res.message, seconds=round(elapsed, 1))

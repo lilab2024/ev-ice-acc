@@ -19,5 +19,6 @@ def select_runs(manifest, qc, cfg, selection="main"):
 
 def list_configs(runs):
     """Configurations in a fixed order: ICE first, then EV, alphabetically within each."""
+    # Descending powertrain order puts "ICE" before "EV"
     return (runs[["powertrain", "config"]].drop_duplicates()
             .sort_values(["powertrain", "config"], ascending=[False, True])["config"].tolist())

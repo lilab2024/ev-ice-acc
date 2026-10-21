@@ -1,7 +1,7 @@
 """Calibration objective: mean spacing RMSE over the runs of one configuration."""
 import numpy as np
 
-from src.models.simulate import run_model
+from src.models.simulate import run_model, run_model_batch
 
 COLLISION_PENALTY = 1e3      # objective value returned when a simulation collides
 
@@ -77,9 +77,6 @@ def objective(x, model, free_names, fixed, runs):
 # ---------------------------------------------------------------------------
 # Vectorized objective (used by the optimizer for speed)
 # ---------------------------------------------------------------------------
-from src.models.simulate import run_model_batch
-
-
 def objective_batch(X, model, free_names, fixed, runs):
     """Mean spacing RMSE for many parameter sets at once.
 

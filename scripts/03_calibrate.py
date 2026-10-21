@@ -1,4 +1,7 @@
-"""Step 03: calibrate IDM and OVRV for every configuration (vehicle x gap setting).
+"""Step 03: calibrate all model variants for every configuration (vehicle x gap setting).
+
+Variants: IDM and OVRV (main and supplementary run selections), IDM and OVRV with an
+actuation lag (EV-aware extension), and the Newell and Gipps baselines (see VARIANTS).
 
 Each (variant, configuration) result is saved immediately as JSON, so an interrupted
 run can be resumed: configurations that already have a result file are skipped.
@@ -48,11 +51,11 @@ def summarize(variant, out_dir, spec):
 
     Bound flags are recomputed from the stored parameters with the current criterion.
     """
-    free_names, bounds, _ = split_spec(spec)                                    # NEW
+    free_names, bounds, _ = split_spec(spec)
     param_rows, error_rows = [], []
     for f in sorted((out_dir / variant).glob("*.json")):
         r = json.loads(f.read_text())
-        flags = bound_flags(free_names, bounds,                                 # NEW
+        flags = bound_flags(free_names, bounds,
                             [r["params"][n] for n in free_names])
         param_rows.append({"config": r["config"], "powertrain": r["powertrain"],
                            "n_runs": len(r["per_run"]), **r["params"],
@@ -104,7 +107,7 @@ def main():
             print(f"  {config:18s} runs={len(runs):3d}  RMSE={r['objective']:.3f} m  "
                   f"at_bound={r['at_bound'] or '-'}  {r['seconds']:.0f} s", flush=True)
 
-        summarize(variant, out_dir, spec)                                       # NEW
+        summarize(variant, out_dir, spec)
         print(f"  summary written to {out_dir / (variant + '_params.csv')}")
 
 
