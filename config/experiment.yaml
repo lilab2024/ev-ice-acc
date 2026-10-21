@@ -48,10 +48,11 @@ calibration:
   # The s0 / eta / S bounds were set before this was unified and remain wide enough.
   params:
     # Main IDM: free-road term switched off during car following (delta, v0 fixed).
-    # Identifiability check: with delta and v0 free, VehA min converged to tau and delta
-    # at their lower bounds (spacing RMSE -8.7 %), while IONIQ 5 Short converged by itself
-    # to delta ~ 23, v0 ~ 50 (RMSE unchanged). Fixing them keeps all parameters interior
-    # and comparable across vehicles.
+    # Identifiability check (variant supp_idm_free, Table S3): with delta and v0 free,
+    # VehA, VehB and VehC min converge to tau and delta at their lower bounds (spacing
+    # RMSE -4.9 to -8.0 %; VehA min stops at the iteration limit), while IONIQ 5 Short
+    # converges by itself to delta ~ 34, v0 ~ 45 (RMSE unchanged). Fixing them keeps the
+    # parameters interior (except s0 of Model 3 Short) and comparable across vehicles.
     idm:
       v0:    40.0
       delta: 20.0
@@ -123,7 +124,8 @@ parameter_use:
     "Model 3 Short": >-
       Both IDM and OVRV fail to represent this vehicle (spacing RMSE 4.3-5.4 m, 2-3x the
       other EVs). Parameters are unstable: dropping the two 5_desired runs moves the OVRV
-      equilibrium
+      equilibrium headway at 20 m/s from 2.12 to 2.93 s (measured: 1.73 s at 19-21 m/s),
+      with eta at its upper bound in both fits.
 
 human_driver:
   # Human-driven baseline: IDM with the highway parameters of Treiber & Kesting (2013),
