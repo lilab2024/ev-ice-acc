@@ -1,4 +1,6 @@
 """Event-level analysis: how the follower responds to each leader deceleration."""
+import warnings
+
 import numpy as np
 import pandas as pd
 
@@ -37,14 +39,14 @@ def find_leader_decelerations(t, v_l, a_l, min_drop=1.5, a_thr=0.3, merge_gap_s=
         if len(accelerating):
             stop = e + accelerating[0]
         i_min = s + int(np.argmin(v_l[s:stop + 1]))
-        if candidates and s <= candidates[-1][1]:                              # NEW
+        if candidates and s <= candidates[-1][1]:
             # starts before the previous minimum: same deceleration, merge
             prev_s, prev_min = candidates[-1]
             candidates[-1] = (prev_s, i_min if v_l[i_min] < v_l[prev_min] else prev_min)
         else:
             candidates.append((s, i_min))
 
-    events = []                                                                # NEW
+    events = []
     for s, i_min in candidates:
         v_before = v_l[max(0, s - int(pre_s / dt)):s + 1].mean()
         if v_before - v_l[i_min] >= min_drop:
@@ -76,6 +78,7 @@ def event_metrics(run, i_start, i_min, post_s=15.0, pre_s=3.0):
     delay = (_half_drop_time(t[win], v_f[win], v_f_before, drop_f)
              - _half_drop_time(t[win], v_l[win], v_l_before, drop_l))
 
+    # 0.45 m/s: same threshold as preprocess.min_speed_for_headway in experiment.yaml
     headway = s[win] / np.where(v_f[win] > 0.45, v_f[win], np.nan)
     return dict(t_start=t[i_start], v_l_before=v_l_before, v_l_min=v_l[i_min],
                 drop_leader=drop_l, drop_follower=drop_f,
@@ -85,8 +88,18 @@ def event_metrics(run, i_start, i_min, post_s=15.0, pre_s=3.0):
                 delay_s=delay, min_headway=np.nanmin(headway), min_spacing=s[win].min())
 
 
-def run_events(run, min_drop=1.5):
-    """All leader deceleration events of one run as a DataFrame."""
+def run_events(run, min_drop=1.5, post_s=15.0):
+    """All leader deceleration events of one run as a DataFrame.
+
+    The follower response is evaluated up to post_s after the leader minimum. A warning is
+    issued if this window reaches the start of the next event (it does not in the present
+    data), since the follower minimum could then belong to the next event.
+    """
     pairs = find_leader_decelerations(run["t"], run["v_l"], run["a_l"], min_drop)
-    rows = [event_metrics(run, i0, i1) for i0, i1 in pairs]
+    dt = run["t"][1] - run["t"][0]
+    for (_, i_min), (next_start, _) in zip(pairs[:-1], pairs[1:]):
+        if next_start <= i_min + int(post_s / dt):
+            warnings.warn(f"Event window reaches the next event at "
+                          f"t = {run['t'][next_start]:.1f} s")
+    rows = [event_metrics(run, i0, i1, post_s=post_s) for i0, i1 in pairs]
     return pd.DataFrame(rows, columns=METRIC_COLUMNS)
