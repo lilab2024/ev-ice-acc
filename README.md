@@ -107,5 +107,5 @@ Table 1, a literature overview that is typeset by hand.
 | Fig. 13 | `figS1_flow_density` | Flow versus density |
 
 File names keep the numbering of the code; LaTeX numbers the floats by their position.
-Fig. 6 uses `results/data_summary/event_curves.csv` (built once from the processed data;
-delete the file to rebuild it).
+Fig. 6 uses `results/data_summary/event_curves.csv`: it is rebuilt from the processed
+data when they are available; otherwise the stored file is used.

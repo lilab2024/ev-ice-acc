@@ -37,18 +37,22 @@ def build_event_curves(traj, events, pre_s=3.0, window=(-3.0, 15.0), dt=0.1):
 def load_or_build(paths, res_dir, main_sel):
     """Curves of the main selection (leader drops of 3-5 m/s); cached in results/data_summary.
 
-    The cache is rebuilt when results/statistics/events.csv is newer than the cache.
+    The curves are rebuilt whenever the processed trajectories are available, so they always
+    match results/statistics/events.csv. Without the data (e.g. after cloning the repository)
+    the cached file is used; both give identical figures.
     """
     cache = res_dir / "data_summary" / "event_curves.csv"
     events_path = res_dir / "statistics" / "events.csv"
-    if cache.exists() and cache.stat().st_mtime >= events_path.stat().st_mtime:
+    traj_path = paths["processed"] / "trajectories_10hz.parquet"
+    if not traj_path.exists():
+        if not cache.exists():
+            raise FileNotFoundError(f"Neither {traj_path} nor {cache} exists")
         return pd.read_csv(cache)
     ev = pd.read_csv(events_path)
     ev = ev[(ev["drop_bin"] == "3-5")
             & ((ev["powertrain"] == "ICE") | ev["v_reduced_mph"].isin(main_sel))]
     print("  events used (paper: 103 ICE, 54 EV):", ev.groupby("powertrain").size().to_dict())
-    traj = pd.read_parquet(paths["processed"] / "trajectories_10hz.parquet",
-                           columns=["run_id", "t", "v_l", "v_f"])
+    traj = pd.read_parquet(traj_path, columns=["run_id", "t", "v_l", "v_f"])
     curves = build_event_curves(traj, ev)
     curves.round(4).to_csv(cache, index=False)
     # Return the cached version so that the figure is identical whether or not the
