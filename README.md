@@ -74,6 +74,12 @@ Python 3.13 with the package versions in `requirements.txt` (numpy, pandas, scip
 matplotlib, pyyaml, pyarrow, pytest). All results were reproduced with exactly these
 versions; with other versions the calibration may differ in the last digits.
 
+## License
+
+The code and the derived results are released under the MIT License (see `LICENSE`).
+The original datasets are not included and remain subject to the terms of their
+publishers (Gunter et al., 2020; MicroSimACC database).
+
 ## Paper tables and figures
 
 Numbers are those of the manuscript; files are in `results/paper/tables/` and
