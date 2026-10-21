@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Full reproduction of all results (about 7 hours). Run from the repository root.
+# Full reproduction of all results (about 4 hours on Google Colab). Run from the repository root.
 set -e
 python -m pytest tests -q
 python scripts/01_preprocess.py
