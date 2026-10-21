@@ -68,6 +68,26 @@ def summarize(variant, out_dir, spec):
     pd.DataFrame(error_rows).to_csv(out_dir / f"{variant}_errors.csv", index=False)
 
 
+def check_stored(out_file, spec, run_ids):
+    """Raise if a stored result was computed with other settings than the current ones.
+
+    Compares the free and fixed parameters and the calibration runs. Parameter bounds are
+    not stored in the result files, so a change of the bounds alone is not detected.
+    """
+    r = json.loads(out_file.read_text())
+    free_names, _, fixed = split_spec(spec)
+    problems = []
+    if r["free"] != free_names:
+        problems.append(f"free parameters {r['free']} -> {free_names}")
+    if r["fixed"] != fixed:
+        problems.append(f"fixed parameters {r['fixed']} -> {fixed}")
+    if sorted(r["per_run"]) != sorted(run_ids):
+        problems.append("different calibration runs")
+    if problems:
+        raise RuntimeError(f"{out_file} was computed with other settings "
+                           f"({'; '.join(problems)}). Use --force to recompute.")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--variants", nargs="+", default=DEFAULT_VARIANTS,
@@ -94,10 +114,11 @@ def main():
 
         for config in list_configs(runs_table):
             out_file = out_dir / variant / f"{config.replace(' ', '_')}.json"
+            sub = runs_table[runs_table["config"] == config]
             if out_file.exists() and not args.force:
+                check_stored(out_file, spec, sub["run_id"].tolist())
                 print(f"  {config:18s} already done, skipped")
                 continue
-            sub = runs_table[runs_table["config"] == config]
             runs = prepare_runs(traj, sub["run_id"].tolist())
             r = calibrate(model, spec, runs, seed=opt["seed"], popsize=opt["popsize"],
                           maxiter=opt["maxiter"], tol=opt["tol"])
